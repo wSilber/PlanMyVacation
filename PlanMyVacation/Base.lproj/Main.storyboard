@@ -66,7 +66,7 @@
             </objects>
             <point key="canvasLocation" x="18.840579710144929" y="77.678571428571431"/>
         </scene>
-        <!--Item 2-->
+        <!--Hotels-->
         <scene sceneID="6mo-4N-anQ">
             <objects>
                 <viewController id="VgU-7p-KuA" sceneMemberID="viewController">
@@ -76,13 +76,29 @@
                         <viewLayoutGuide key="safeArea" id="xz0-ev-R9G"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="sLZ-G5-bzU"/>
+                    <tabBarItem key="tabBarItem" title="Hotels" id="sLZ-G5-bzU"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qlK-gt-N0V" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2219" y="352"/>
+            <point key="canvasLocation" x="2170" y="62"/>
         </scene>
-        <!--Item 1-->
+        <!--Landmarks-->
+        <scene sceneID="76q-c9-gV4">
+            <objects>
+                <viewController id="l2J-pW-aTO" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="57d-py-TY9">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="nwk-sZ-HuE"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Landmarks" id="Hcz-Pe-0Ej"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UWW-p0-Do5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2125" y="842"/>
+        </scene>
+        <!--Restaurants-->
         <scene sceneID="kXu-dS-Tl9">
             <objects>
                 <viewController id="432-GI-nEp" sceneMemberID="viewController">
@@ -92,11 +108,11 @@
                         <viewLayoutGuide key="safeArea" id="nSL-c1-ReI"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" id="83e-jb-F3P"/>
+                    <tabBarItem key="tabBarItem" title="Restaurants" id="83e-jb-F3P"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yIg-kb-h7j" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2220" y="-374"/>
+            <point key="canvasLocation" x="2125" y="-636"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="nfy-Xy-tyT">
@@ -110,6 +126,7 @@
                     <connections>
                         <segue destination="432-GI-nEp" kind="relationship" relationship="viewControllers" id="Spb-Ii-gN0"/>
                         <segue destination="VgU-7p-KuA" kind="relationship" relationship="viewControllers" id="0gb-mV-SDd"/>
+                        <segue destination="l2J-pW-aTO" kind="relationship" relationship="viewControllers" id="WlV-3S-BUh"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WJd-8S-E5R" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
