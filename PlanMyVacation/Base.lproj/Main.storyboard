@@ -66,53 +66,101 @@
             </objects>
             <point key="canvasLocation" x="18.840579710144929" y="77.678571428571431"/>
         </scene>
-        <!--Hotels-->
+        <!--View Controller-->
         <scene sceneID="6mo-4N-anQ">
             <objects>
                 <viewController id="VgU-7p-KuA" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="L3F-qF-dcU">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lr3-om-vnl">
+                                <rect key="frame" x="20" y="180" width="366" height="608"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Table view of list of hotels. When a hotel is clicked, then it opens another view with more details about the hotel" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QPi-Vy-EwC">
+                                <rect key="frame" x="29" y="88" width="349" height="88"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="xz0-ev-R9G"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Hotels" id="sLZ-G5-bzU"/>
+                    <navigationItem key="navigationItem" id="E5x-WC-IYm"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qlK-gt-N0V" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2170" y="62"/>
+            <point key="canvasLocation" x="3035" y="62"/>
         </scene>
-        <!--Landmarks-->
+        <!--View Controller-->
         <scene sceneID="76q-c9-gV4">
             <objects>
                 <viewController id="l2J-pW-aTO" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="57d-py-TY9">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="07U-OH-WIV">
+                                <rect key="frame" x="20" y="181" width="374" height="612"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Table view of list of landmarks. When a landmark is clicked, then it opens another view with more details about the landmark" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gHM-ud-5sv">
+                                <rect key="frame" x="33" y="97" width="349" height="88"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="nwk-sZ-HuE"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Landmarks" id="Hcz-Pe-0Ej"/>
+                    <navigationItem key="navigationItem" id="Mdj-O8-0JK"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UWW-p0-Do5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2125" y="842"/>
+            <point key="canvasLocation" x="3035" y="842"/>
         </scene>
-        <!--Restaurants-->
+        <!--View Controller-->
         <scene sceneID="kXu-dS-Tl9">
             <objects>
                 <viewController id="432-GI-nEp" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bcS-z8-Dut">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="y9v-8B-ql8">
+                                <rect key="frame" x="20" y="206" width="374" height="590"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                            <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sdg-MO-FhA">
+                                <rect key="frame" x="20" y="99" width="374" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="px2-rd-VeJ">
+                                <rect key="frame" x="20" y="128" width="386" height="88"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <string key="text">Table view of list of restaurants. When a restaurant is clicked, then it opens another view with more details about the restaurant</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="nSL-c1-ReI"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Restaurants" id="83e-jb-F3P"/>
+                    <navigationItem key="navigationItem" id="gb9-m3-ylt"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yIg-kb-h7j" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2125" y="-636"/>
+            <point key="canvasLocation" x="3034.7826086956525" y="-636.16071428571422"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="nfy-Xy-tyT">
@@ -124,14 +172,71 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="432-GI-nEp" kind="relationship" relationship="viewControllers" id="Spb-Ii-gN0"/>
-                        <segue destination="VgU-7p-KuA" kind="relationship" relationship="viewControllers" id="0gb-mV-SDd"/>
-                        <segue destination="l2J-pW-aTO" kind="relationship" relationship="viewControllers" id="WlV-3S-BUh"/>
+                        <segue destination="5xF-gH-1RJ" kind="relationship" relationship="viewControllers" id="Spb-Ii-gN0"/>
+                        <segue destination="W4I-MQ-BQn" kind="relationship" relationship="viewControllers" id="0gb-mV-SDd"/>
+                        <segue destination="aLN-l9-LtD" kind="relationship" relationship="viewControllers" id="WlV-3S-BUh"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WJd-8S-E5R" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="846" y="78"/>
+        </scene>
+        <!--Restaurants-->
+        <scene sceneID="YjT-8H-beQ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5xF-gH-1RJ" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Restaurants" id="83e-jb-F3P"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="vxS-eF-YI4">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="432-GI-nEp" kind="relationship" relationship="rootViewController" id="YHe-2q-y7I"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lII-EU-UZ3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2124.6376811594205" y="-636.16071428571422"/>
+        </scene>
+        <!--Hotels-->
+        <scene sceneID="f9e-NW-E75">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="W4I-MQ-BQn" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Hotels" id="sLZ-G5-bzU"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="QY7-TD-hsX">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="VgU-7p-KuA" kind="relationship" relationship="rootViewController" id="dwV-fi-Xzl"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AiR-iy-VZg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2125" y="62"/>
+        </scene>
+        <!--Landmarks-->
+        <scene sceneID="a9l-if-LYj">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aLN-l9-LtD" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Landmarks" id="Hcz-Pe-0Ej"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="HDl-pP-7eF">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="l2J-pW-aTO" kind="relationship" relationship="rootViewController" id="1v7-Of-ebJ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XnU-zm-IUV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2125" y="842"/>
         </scene>
     </scenes>
     <resources>
