@@ -27,7 +27,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="bUl-rz-yQV">
-                                        <rect key="frame" x="25" y="59" width="365" height="331"/>
+                                        <rect key="frame" x="25" y="238" width="365" height="152"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="T1R-M3-nMM">
@@ -58,6 +58,14 @@
                                             <segue destination="Abx-dc-3hS" kind="presentation" id="g3m-4S-KDm"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="9" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nBI-Fa-2Op">
+                                        <rect key="frame" x="26" y="47" width="364" height="189"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <string key="text">Whenever user clicks "Add location", a modal view pops up (which has a table view on it). The table view displays a set list of locations (pulled from Yelp API), which the user can click on 1 location to add to the My Places home page. Then the modal view closes. The user can click on the My Places location they just added, and it will take them to the Tab Bar Controller (with restaurants, hotels, landmarks)</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <constraints>
@@ -66,8 +74,8 @@
                                     <constraint firstItem="Ne6-3I-ddc" firstAttribute="top" secondItem="Jlm-FV-Msc" secondAttribute="top" constant="13" id="uW7-4M-mU0"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0ry-zl-Ey3">
-                                <rect key="frame" x="0.0" y="44" width="414" height="387"/>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0ry-zl-Ey3">
+                                <rect key="frame" x="0.0" y="78" width="414" height="353"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HwA-Re-02l">
                                         <rect key="frame" x="143" y="110" width="128" height="128"/>
@@ -82,6 +90,13 @@
                                     <constraint firstAttribute="trailing" secondItem="HwA-Re-02l" secondAttribute="trailing" constant="143" id="Sm0-VA-ev9"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="HOME PAGE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fb3-Ws-15l">
+                                <rect key="frame" x="168" y="44" width="96" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -102,7 +117,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-859" y="62"/>
+            <point key="canvasLocation" x="-859.4202898550725" y="61.607142857142854"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="dlh-8s-HE6">
@@ -244,7 +259,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WJd-8S-E5R" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="846" y="78"/>
+            <point key="canvasLocation" x="877" y="62"/>
         </scene>
         <!--Restaurants-->
         <scene sceneID="YjT-8H-beQ">
