@@ -81,7 +81,6 @@
 		E1DF17AC273C6ABE005A5951 = {
 			isa = PBXGroup;
 			children = (
-				A40255CF273DC2C20033501E /* HomePage.swift */,
 				E1DF17B7273C6ABE005A5951 /* PlanMyVacation */,
 				E1DF17CE273C6ABF005A5951 /* PlanMyVacationTests */,
 				E1DF17D9273C6AC0005A5951 /* PlanMyVacationUITests */,
@@ -102,6 +101,7 @@
 		E1DF17B7273C6ABE005A5951 /* PlanMyVacation */ = {
 			isa = PBXGroup;
 			children = (
+				A40255CF273DC2C20033501E /* HomePage.swift */,
 				E1DF17B8273C6ABE005A5951 /* AppDelegate.swift */,
 				E1DF17BA273C6ABE005A5951 /* SceneDelegate.swift */,
 				E1DF17BC273C6ABE005A5951 /* ViewController.swift */,
