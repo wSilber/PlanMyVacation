@@ -18,16 +18,16 @@ class CustomCell: UITableViewCell {
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var isClosedLabel: UILabel!
     
-    var isClosed: Bool = false {
-        didSet {
-            if isClosed {
-                isClosedLabel.text = "Closed"
-                
-            } else {
-                isClosedLabel.text = "Open Now"
-            }
-        }
-    }
+//    var isClosed: Bool = false {
+//        didSet {
+//            if isClosed {
+//                isClosedLabel.text = "Closed"
+//
+//            } else {
+//                isClosedLabel.text = "Open Now"
+//            }
+//        }
+//    }
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -56,6 +56,10 @@ extension ViewController{
                     restaurant.distance = business.value(forKey: "distance") as? Double
                     let address = business.value(forKeyPath: "location.display_address") as? [String]
                     restaurant.address = address?.joined(separator: "\n")
+                    restaurant.phone = business.value(forKey: "phone") as? String
+                    restaurant.imageURL = business.value(forKey: "image_url") as? String
+                    restaurant.hours = business.value(forKey: "hours") as? [String]
+
                     //STILL NEED TO CITE ABOVE CODE
                     restaurantsList.append(restaurant)
                 }

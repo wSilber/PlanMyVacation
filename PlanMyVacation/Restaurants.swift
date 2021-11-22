@@ -15,4 +15,7 @@ struct Restaurants{
     var is_closed: Bool?
     var distance: Double?
     var address: String?
+    var hours: [String]?
+    var phone: String?
+    var imageURL: String?
 }

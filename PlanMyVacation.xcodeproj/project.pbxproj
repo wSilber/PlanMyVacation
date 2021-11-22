@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DF3BA3EB274B49490088D8D6 /* DetailedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF3BA3EA274B49490088D8D6 /* DetailedViewController.swift */; };
 		DFF14F5E27409E710028B82A /* Restaurants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF14F5D27409E710028B82A /* Restaurants.swift */; };
 		DFF14F6027409F160028B82A /* FetchRestaurantData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF14F5F27409F160028B82A /* FetchRestaurantData.swift */; };
 		DFF14F662740A4320028B82A /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF14F652740A4320028B82A /* CustomCell.swift */; };
@@ -39,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DF3BA3EA274B49490088D8D6 /* DetailedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedViewController.swift; sourceTree = "<group>"; };
 		DFF14F5D27409E710028B82A /* Restaurants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restaurants.swift; sourceTree = "<group>"; };
 		DFF14F5F27409F160028B82A /* FetchRestaurantData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchRestaurantData.swift; sourceTree = "<group>"; };
 		DFF14F652740A4320028B82A /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 				DFF14F5F27409F160028B82A /* FetchRestaurantData.swift */,
 				DFF14F652740A4320028B82A /* CustomCell.swift */,
 				DFF14F672740A4780028B82A /* CustomCell.xib */,
+				DF3BA3EA274B49490088D8D6 /* DetailedViewController.swift */,
 			);
 			path = PlanMyVacation;
 			sourceTree = "<group>";
@@ -271,6 +274,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF3BA3EB274B49490088D8D6 /* DetailedViewController.swift in Sources */,
 				DFF14F6027409F160028B82A /* FetchRestaurantData.swift in Sources */,
 				E1DF17BD273C6ABE005A5951 /* ViewController.swift in Sources */,
 				E1DF17B9273C6ABE005A5951 /* AppDelegate.swift in Sources */,

@@ -9,7 +9,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UISearchBarDelegate{
+class ViewController: UIViewController, UISearchBarDelegate {
     
     @IBOutlet weak var restaurantsTableView: UITableView!
     
@@ -154,23 +154,31 @@ class ViewController: UIViewController, UISearchBarDelegate{
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let detailedVC = DetailedViewController()
+        detailedVC.restaurants = restaurants[indexPath.row]
+        navigationController?.pushViewController(detailedVC, animated: true)
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return restaurants.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 400
+        return 160
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath) as! CustomCell
         
         cell.nameLabel.text = restaurants[indexPath.row].name
-        cell.ratingLabel.text = String(restaurants[indexPath.row].rating ?? 0.0)
-        cell.priceLabel.text = restaurants[indexPath.row].price ?? "No Info"
-        cell.isClosed = restaurants[indexPath.row].is_closed ?? false
-        cell.addressLabel.text = restaurants[indexPath.row].address
+        //cell.ratingLabel.text = String(restaurants[indexPath.row].rating ?? 0.0)
+        //cell.priceLabel.text = restaurants[indexPath.row].price ?? "No Info"
+        //cell.isClosed = restaurants[indexPath.row].is_closed ?? false
+        //cell.addressLabel.text = restaurants[indexPath.row].address
         
         return cell
     }
+    
+    
 }
