@@ -38,6 +38,11 @@ class DetailedViewController: UIViewController {
         nameView.font = nameView.font?.withSize(25)
         view.addSubview(nameView)
         
+        let favoriteFrame = CGRect(x: view.frame.midX+100, y: 125, width: 60, height: 60)
+        let favView = UIButton(frame: favoriteFrame)
+        favView.setImage(UIImage(named: "starBefore"), for: .normal)
+        favView.addTarget(self, action: #selector(insertfavoritePlace(_:)), for: .touchUpInside)
+        view.addSubview(favView)
         
         let thePriceFrame = CGRect(x: view.frame.midX-150, y: 250, width: 300, height: 50)
         let priceView = UITextView(frame: thePriceFrame)
@@ -118,6 +123,10 @@ class DetailedViewController: UIViewController {
         }
         isClosedView.font = isClosedView.font?.withSize(18)
         
+        
+        
+        
+        
 //        let hoursFrame = CGRect(x: view.frame.midX-150, y: 500, width: 300, height: 80)
 //        let theHoursView = UITextView(frame: hoursFrame)
 //        //addressView.backgroundColor = UIColor.blue
@@ -126,10 +135,14 @@ class DetailedViewController: UIViewController {
 //        view.addSubview(theHoursView)
 
         view.addSubview(isClosedView)
-        
+
         // Do any additional setup after loading the view.
     }
     
+    @objc func insertfavoritePlace(_ sender: UIButton){
+        sender.setImage(UIImage(named: "starAfter"), for: UIControl.State.normal)
+        //INSERT MOVIE INTO LIST
+    }
 
     /*
     // MARK: - Navigation
