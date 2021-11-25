@@ -118,8 +118,8 @@
 				E1DF17C6273C6ABF005A5951 /* Info.plist */,
 				DFF14F5D27409E710028B82A /* Restaurants.swift */,
 				DFF14F5F27409F160028B82A /* FetchRestaurantData.swift */,
-				DFF14F652740A4320028B82A /* CustomCell.swift */,
 				DFF14F672740A4780028B82A /* CustomCell.xib */,
+				DFF14F652740A4320028B82A /* CustomCell.swift */,
 				DF3BA3EA274B49490088D8D6 /* DetailedViewController.swift */,
 			);
 			path = PlanMyVacation;

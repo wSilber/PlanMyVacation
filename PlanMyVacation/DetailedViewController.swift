@@ -16,33 +16,41 @@ class DetailedViewController: UIViewController {
         
         let imageFrame = CGRect(x: view.frame.midX-150, y: 500, width: 300, height: 250)
         let imageView = UIImageView(frame: imageFrame)
-        //let imagePath = restaurants!.imageURL!
 
         if let imagePath = restaurants!.imageURL {
-            let imageurll = URL(string: imagePath)
-            let data = try? Data(contentsOf: imageurll!)
+            if let imageurll = URL(string: imagePath){
+            let data = try? Data(contentsOf: imageurll)
             let image = UIImage(data:data!)
             imageView.image = image
             self.image = image
+            }
+            if URL(string: imagePath) == nil {
+                imageView.image = UIImage(named: "noImageFound")
+                self.image = UIImage(named: "noImageFound")
+            }
         }
         view.addSubview(imageView)
 
         view.backgroundColor = UIColor.white
         self.title = restaurants?.name
-        self.title = restaurants?.price
         
         let theNameFrame = CGRect(x: view.frame.midX-150, y: 150, width: 300, height: 100)
         let nameView = UITextView(frame: theNameFrame)
         //nameView.backgroundColor = UIColor.blue
-        nameView.text = "Name: " + (restaurants!.name!)
+        if let placeName = restaurants!.name{
+            nameView.text = "Name: " + (placeName)
+        }
+        if restaurants!.name == nil || restaurants!.name == "" {
+            nameView.text = "Name: Missing Name"
+        }
         nameView.font = nameView.font?.withSize(25)
         view.addSubview(nameView)
         
-        let favoriteFrame = CGRect(x: view.frame.midX+100, y: 125, width: 60, height: 60)
-        let favView = UIButton(frame: favoriteFrame)
-        favView.setImage(UIImage(named: "starBefore"), for: .normal)
-        favView.addTarget(self, action: #selector(insertfavoritePlace(_:)), for: .touchUpInside)
-        view.addSubview(favView)
+//        let favoriteFrame = CGRect(x: view.frame.midX+100, y: 125, width: 60, height: 60)
+//        let favView = UIButton(frame: favoriteFrame)
+//        favView.setImage(UIImage(named: "starBefore"), for: .normal)
+//        favView.addTarget(self, action: #selector(insertfavoritePlace(_:)), for: .touchUpInside)
+//        view.addSubview(favView)
         
         let thePriceFrame = CGRect(x: view.frame.midX-150, y: 250, width: 300, height: 50)
         let priceView = UITextView(frame: thePriceFrame)
@@ -123,10 +131,6 @@ class DetailedViewController: UIViewController {
         }
         isClosedView.font = isClosedView.font?.withSize(18)
         
-        
-        
-        
-        
 //        let hoursFrame = CGRect(x: view.frame.midX-150, y: 500, width: 300, height: 80)
 //        let theHoursView = UITextView(frame: hoursFrame)
 //        //addressView.backgroundColor = UIColor.blue
@@ -139,10 +143,10 @@ class DetailedViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    @objc func insertfavoritePlace(_ sender: UIButton){
-        sender.setImage(UIImage(named: "starAfter"), for: UIControl.State.normal)
-        //INSERT MOVIE INTO LIST
-    }
+//    @objc func insertfavoritePlace(_ sender: UIButton){
+//        sender.setImage(UIImage(named: "starAfter"), for: UIControl.State.normal)
+//        //INSERT MOVIE INTO LIST
+//    }
 
     /*
     // MARK: - Navigation
