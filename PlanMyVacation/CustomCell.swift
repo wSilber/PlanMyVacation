@@ -22,7 +22,6 @@ class CustomCell: UITableViewCell {
         // Initialization code
     }
     
-    
     @IBAction func insertFavPlace(_ sender: UIButton) {
         sender.setImage(UIImage(named: "starAfter"), for: UIControl.State.normal)
         //FAV BUTTON NOT WORKING????

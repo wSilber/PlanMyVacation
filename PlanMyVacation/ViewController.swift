@@ -201,11 +201,18 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath) as! CustomCell
         
         cell.nameLabel.text = restaurants[indexPath.row].name
-        let dist = String(format: "%.2f",restaurants[indexPath.row].distance!*0.000621)
+        if let ratingnotnill = restaurants[indexPath.row].rating {
+        let ratinglabel = String(format: "%.1f",ratingnotnill)
+        cell.distanceLabel.text = "Rating: " + String(ratinglabel) + "/5.0"
+        //priceView.font = priceView.font?.withSize(18)
+        cell.distanceLabel.font = cell.distanceLabel.font?.withSize(13)
+        }
+        if (restaurants[indexPath.row].rating == nil){
+            cell.distanceLabel.text = ""
+        }
         
-        cell.distanceLabel.text = "Distance: " + dist + " miles"
+        //cell.distanceLabel.text = "Distance: " + dist + " miles"
         cell.clipsToBounds = true
-        cell.frame = cell.frame.offsetBy(dx: 10, dy: 10);
 
         //cell.ratingLabel.text = String(restaurants[indexPath.row].rating ?? 0.0)
         //cell.priceLabel.text = restaurants[indexPath.row].price ?? "No Info"

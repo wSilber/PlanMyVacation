@@ -86,7 +86,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1806.1538461538462" y="819.66824644549763"/>
+            <point key="canvasLocation" x="1914" y="1494"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="kXu-dS-Tl9">
@@ -97,7 +97,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="y9v-8B-ql8">
-                                <rect key="frame" x="20" y="137" width="374" height="659"/>
+                                <rect key="frame" x="20" y="137" width="354" height="659"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
@@ -109,7 +109,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yIg-kb-h7j" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2971.0144927536235" y="-217.63392857142856"/>
+            <point key="canvasLocation" x="2970.7692307692305" y="-218.24644549763033"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="nfy-Xy-tyT">
@@ -121,8 +121,9 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="c5L-BY-Kdr" kind="relationship" relationship="viewControllers" id="g3p-Uj-bF9"/>
-                        <segue destination="5xF-gH-1RJ" kind="relationship" relationship="viewControllers" id="Spb-Ii-gN0"/>
+                        <segue destination="pGT-Zc-FcA" kind="relationship" relationship="viewControllers" id="DSZ-hT-B5e"/>
+                        <segue destination="c5L-BY-Kdr" kind="relationship" relationship="viewControllers" id="iPY-Xg-nZI"/>
+                        <segue destination="5xF-gH-1RJ" kind="relationship" relationship="viewControllers" id="Vmr-5U-kQt"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WJd-8S-E5R" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -148,11 +149,38 @@
             </objects>
             <point key="canvasLocation" x="2008" y="6"/>
         </scene>
-        <!--Home-->
+        <!--Explore-->
+        <scene sceneID="btQ-GE-GOq">
+            <objects>
+                <viewController id="pGT-Zc-FcA" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7iO-Ht-X48">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="buX-Wb-KVb">
+                                <rect key="frame" x="43" y="244" width="333" height="292"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <string key="text">Starting page: maybe add a slideshow of pictures of random locations and they can add it to their trips by favoriting a location they see</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="nuU-AL-Q5v"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Explore" image="network" catalog="system" id="xg3-7U-Zal"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QfQ-dL-8mv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2773.8461538461538" y="764.92890995260655"/>
+        </scene>
+        <!--Search-->
         <scene sceneID="vtq-nd-77c">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gfG-9s-INq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="c5L-BY-Kdr" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Home" image="homekit" catalog="system" id="Dd3-Oa-Ea4"/>
+                    <tabBarItem key="tabBarItem" title="Search" image="magnifyingglass" catalog="system" id="Dd3-Oa-Ea4"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="JRe-9U-xea">
                         <rect key="frame" x="0.0" y="44" width="390" height="44"/>
@@ -163,14 +191,14 @@
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="WvF-Rg-2ey"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="gfG-9s-INq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="876.92307692307691" y="819.66824644549763"/>
+            <point key="canvasLocation" x="792" y="958"/>
         </scene>
     </scenes>
     <resources>
         <image name="airplane" catalog="system" width="128" height="115"/>
-        <image name="homekit" catalog="system" width="128" height="106"/>
+        <image name="magnifyingglass" catalog="system" width="128" height="115"/>
+        <image name="network" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
