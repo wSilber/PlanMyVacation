@@ -181,7 +181,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="111" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Elg-e8-BYj">
-                                                    <rect key="frame" x="0.0" y="0.0" width="370" height="436"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="378" height="436"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                             </subviews>
@@ -191,11 +191,25 @@
                                 </cells>
                             </collectionView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="8" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zNg-7f-15p">
-                                <rect key="frame" x="33" y="585" width="341" height="168"/>
+                                <rect key="frame" x="33" y="575" width="341" height="168"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <string key="text">I had some code from my lab4 of a slideshow so i just added it here. i thought our app would look better if we have some sort of Explore page instead of users starting directly on the search page. if we wanna remove it later we can</string>
+                                <string key="text">I had code from my lab4 of a slideshow so i pasted it here. i thought our app would look better if we have some sort of Explore page instead of users starting directly on the search page. if we wanna add features like "add to My Trips" I think that'd be nice </string>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Explore New Cities!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yfh-dD-TlY">
+                                <rect key="frame" x="85" y="56" width="236" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="City Placeholder " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gyB-El-xfm">
+                                <rect key="frame" x="101" y="568" width="191" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -205,6 +219,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Explore" image="network" catalog="system" id="xg3-7U-Zal"/>
                     <connections>
+                        <outlet property="cityName" destination="gyB-El-xfm" id="t7w-92-tgn"/>
                         <outlet property="pageController" destination="iRU-FM-yxF" id="Dr4-qc-IlR"/>
                         <outlet property="sliderCollectionView" destination="rVZ-mI-hbM" id="5Wk-Oo-QQC"/>
                     </connections>
