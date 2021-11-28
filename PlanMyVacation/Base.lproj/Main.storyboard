@@ -5,6 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -86,7 +87,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1914" y="1494"/>
+            <point key="canvasLocation" x="1348" y="1629"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="kXu-dS-Tl9">
@@ -109,7 +110,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yIg-kb-h7j" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2970.7692307692305" y="-218.24644549763033"/>
+            <point key="canvasLocation" x="3092" y="62"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="nfy-Xy-tyT">
@@ -147,38 +148,74 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lII-EU-UZ3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2008" y="6"/>
+            <point key="canvasLocation" x="2023" y="62"/>
         </scene>
         <!--Explore-->
         <scene sceneID="btQ-GE-GOq">
             <objects>
-                <viewController id="pGT-Zc-FcA" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="7iO-Ht-X48">
+                <viewController id="pGT-Zc-FcA" customClass="Explore" customModule="PlanMyVacation" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7iO-Ht-X48" userLabel="View" customClass="UICollectionView">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="buX-Wb-KVb">
-                                <rect key="frame" x="43" y="244" width="333" height="292"/>
+                            <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="iRU-FM-yxF">
+                                <rect key="frame" x="60" y="540" width="270" height="27"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <string key="text">Starting page: maybe add a slideshow of pictures of random locations and they can add it to their trips by favoriting a location they see</string>
+                            </pageControl>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="rVZ-mI-hbM" userLabel="Slider Collection View">
+                                <rect key="frame" x="16" y="103" width="358" height="429"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="yPr-e4-z7b">
+                                    <size key="itemSize" width="378" height="436"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="1BP-Xc-ZJl">
+                                        <rect key="frame" x="0.0" y="-3.6666666666666665" width="378" height="436"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Azv-1G-gpS">
+                                            <rect key="frame" x="0.0" y="0.0" width="378" height="436"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="111" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Elg-e8-BYj">
+                                                    <rect key="frame" x="0.0" y="0.0" width="370" height="436"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                            </subviews>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="378" height="436"/>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="8" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zNg-7f-15p">
+                                <rect key="frame" x="33" y="585" width="341" height="168"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <string key="text">I had some code from my lab4 of a slideshow so i just added it here. i thought our app would look better if we have some sort of Explore page instead of users starting directly on the search page. if we wanna remove it later we can</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="nuU-AL-Q5v"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.66351849410844377" green="0.88746948328902564" blue="0.91033534413760475" alpha="0.69470422447317171" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Explore" image="network" catalog="system" id="xg3-7U-Zal"/>
+                    <connections>
+                        <outlet property="pageController" destination="iRU-FM-yxF" id="Dr4-qc-IlR"/>
+                        <outlet property="sliderCollectionView" destination="rVZ-mI-hbM" id="5Wk-Oo-QQC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QfQ-dL-8mv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2773.8461538461538" y="764.92890995260655"/>
+            <point key="canvasLocation" x="36.92307692307692" y="826.77725118483409"/>
         </scene>
         <!--Search-->
         <scene sceneID="vtq-nd-77c">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="gfG-9s-INq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="c5L-BY-Kdr" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Search" image="magnifyingglass" catalog="system" id="Dd3-Oa-Ea4"/>
                     <toolbarItems/>
@@ -191,8 +228,9 @@
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="WvF-Rg-2ey"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gfG-9s-INq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="792" y="958"/>
+            <point key="canvasLocation" x="1348" y="827"/>
         </scene>
     </scenes>
     <resources>
