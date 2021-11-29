@@ -18,4 +18,5 @@ struct Restaurants{
     var hours: [String]?
     var phone: String?
     var imageURL: String?
+    var location: String?
 }

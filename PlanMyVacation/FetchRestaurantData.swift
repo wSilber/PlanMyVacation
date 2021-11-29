@@ -59,6 +59,7 @@ extension ViewController{
                     restaurant.phone = business.value(forKey: "phone") as? String
                     restaurant.imageURL = business.value(forKey: "image_url") as? String
                     restaurant.hours = business.value(forKey: "hours") as? [String]
+                    restaurant.location = business.value(forKey: "location.city") as? String
 
                     //STILL NEED TO CITE ABOVE CODE
                     restaurantsList.append(restaurant)

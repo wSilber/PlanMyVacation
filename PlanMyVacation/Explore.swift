@@ -62,7 +62,6 @@ class Explore: UIViewController, UICollectionViewDelegate, UICollectionViewDataS
     @objc func changeImage() {
      if counter < imgArr.count {
          let index = IndexPath.init(item: counter, section: 0)
-         print(index)
          self.sliderCollectionView.scrollToItem(at: index, at: .centeredHorizontally, animated: true)
          pageController.currentPage = counter
         cityName.text = "Explore " + text[counter]

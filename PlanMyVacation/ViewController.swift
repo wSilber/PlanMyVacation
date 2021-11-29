@@ -25,6 +25,7 @@ class ViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDe
 
     
     var restaurants: [Restaurants] = []
+    var favoritesViewController: [Restaurants] = []
     
     var searchText : String = ""
     var categories: String = "restaurants"
@@ -37,6 +38,7 @@ class ViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDe
     override func viewDidLoad() {
         super.viewDidLoad()
         setUsersClosestCity()
+        searchBar.placeholder = "Search a Location"
         locationManager.startUpdatingLocation()
         
         searchBar.delegate = self
@@ -72,14 +74,14 @@ class ViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDe
         CPlatitude = locValue.latitude
         CPlongitude = locValue.longitude
         location = CLLocation(latitude: CPlatitude, longitude: CPlongitude)
-        print("locationManager \(location)")
+//        print("locationManager \(location)")
     }
 
     func setUsersClosestCity(){
     //https://stackoverflow.com/questions/47987473/addressdictionary-is-deprecated-first-deprecated-in-ios-11-0-use-properties
     let geoCoder = CLGeocoder()
         geoCoder.reverseGeocodeLocation(location) { [self] (placemarksArray, error) in
-                print(placemarksArray!)
+//                print(placemarksArray!)
                 if (error) == nil {
                     if placemarksArray!.count > 0 {
                         let placemark = placemarksArray?[0]
@@ -87,7 +89,7 @@ class ViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDe
                         if let userlocation = placemark?.locality {
                             let userlocation = String(userlocation.filter { !" \n\t\r".contains($0) })
                             self.locationInput = userlocation
-                            print("setUsersClosesCity \(locationInput)")
+//                            print("setUsersClosesCity \(locationInput)")
                         }
                     }
                 }
@@ -96,7 +98,7 @@ class ViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDe
     }
     
     @IBAction func selectCategory(_ sender: UISegmentedControl) {
-        print("selectCategory \(locationInput)")
+//        print("selectCategory \(locationInput)")
 
         if categoryRHL.selectedSegmentIndex == 0 {
             categories = "restaurants"
@@ -110,7 +112,7 @@ class ViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDe
 //                                }
 //                            }
 //            }
-            print("selectCategory \(locationInput)")
+//            print("selectCategory \(locationInput)")
 
             retrieveVenues(location: locationInput, category: categories,
                            limit: 50, sortBy: "distance", locale: "en_US") { (response, error) in
@@ -157,16 +159,17 @@ class ViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDe
                         }
         }
     }
-    print("selectCategory \(locationInput)")
+//    print("selectCategory \(locationInput)")
 }
-  
+    var searchedCity : String = ""
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar){
-        print("entered")
+//        print("entered")
         if let text = searchBar.text{
+            searchedCity = text
             let text1 = String(text.filter { !" \n\t\r".contains($0) })
-            print(text1)
+//            print(text1)
             locationInput = text1
-            print(text)
+//            print(text)
         }
         retrieveVenues(location: locationInput, category: categories,
                        limit: 50, sortBy: "distance", locale: "en_US") { (response, error) in
@@ -201,6 +204,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath) as! CustomCell
         
         cell.nameLabel.text = restaurants[indexPath.row].name
+        restaurants[indexPath.row].location = searchedCity
         if let ratingnotnill = restaurants[indexPath.row].rating {
         let ratinglabel = String(format: "%.1f",ratingnotnill)
         cell.distanceLabel.text = "Rating: " + String(ratinglabel) + "/5.0"
