@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		84CEA141275577C000083906 /* FavoritedCity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CEA140275577C000083906 /* FavoritedCity.swift */; };
+		84CEA1432755920100083906 /* FavoritesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CEA1422755920100083906 /* FavoritesController.swift */; };
 		DF3BA3EB274B49490088D8D6 /* DetailedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF3BA3EA274B49490088D8D6 /* DetailedViewController.swift */; };
 		DF4A958127548E35005ABBB8 /* favoriteListClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4A958027548E35005ABBB8 /* favoriteListClass.swift */; };
 		DF4A958327548E9B005ABBB8 /* favData.plist in Resources */ = {isa = PBXBuildFile; fileRef = DF4A958227548E9B005ABBB8 /* favData.plist */; };
@@ -43,6 +45,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		84CEA140275577C000083906 /* FavoritedCity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritedCity.swift; sourceTree = "<group>"; };
+		84CEA1422755920100083906 /* FavoritesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesController.swift; sourceTree = "<group>"; };
 		DF3BA3EA274B49490088D8D6 /* DetailedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedViewController.swift; sourceTree = "<group>"; };
 		DF4A958027548E35005ABBB8 /* favoriteListClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = favoriteListClass.swift; sourceTree = "<group>"; };
 		DF4A958227548E9B005ABBB8 /* favData.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = favData.plist; sourceTree = "<group>"; };
@@ -118,6 +122,7 @@
 				E1DF17B8273C6ABE005A5951 /* AppDelegate.swift */,
 				E1DF17BA273C6ABE005A5951 /* SceneDelegate.swift */,
 				E1DF17BC273C6ABE005A5951 /* ViewController.swift */,
+				84CEA1422755920100083906 /* FavoritesController.swift */,
 				E1DF17BE273C6ABE005A5951 /* Main.storyboard */,
 				E1DF17C1273C6ABF005A5951 /* Assets.xcassets */,
 				E1DF17C3273C6ABF005A5951 /* LaunchScreen.storyboard */,
@@ -126,6 +131,7 @@
 				DFF14F5F27409F160028B82A /* FetchRestaurantData.swift */,
 				DFF14F672740A4780028B82A /* CustomCell.xib */,
 				DFF14F652740A4320028B82A /* CustomCell.swift */,
+				84CEA140275577C000083906 /* FavoritedCity.swift */,
 				DF3BA3EA274B49490088D8D6 /* DetailedViewController.swift */,
 				DF5BDE09275346290015B367 /* Explore.swift */,
 				DF4A958027548E35005ABBB8 /* favoriteListClass.swift */,
@@ -291,8 +297,10 @@
 				E1DF17BD273C6ABE005A5951 /* ViewController.swift in Sources */,
 				E1DF17B9273C6ABE005A5951 /* AppDelegate.swift in Sources */,
 				E1DF17BB273C6ABE005A5951 /* SceneDelegate.swift in Sources */,
+				84CEA141275577C000083906 /* FavoritedCity.swift in Sources */,
 				DFF14F5E27409E710028B82A /* Restaurants.swift in Sources */,
 				DFF14F662740A4320028B82A /* CustomCell.swift in Sources */,
+				84CEA1432755920100083906 /* FavoritesController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

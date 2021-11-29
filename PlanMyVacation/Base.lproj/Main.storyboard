@@ -94,10 +94,10 @@
             </objects>
             <point key="canvasLocation" x="1347.6923076923076" y="1628.6729857819905"/>
         </scene>
-        <!--View Controller-->
+        <!--Favorites Controller-->
         <scene sceneID="kXu-dS-Tl9">
             <objects>
-                <viewController id="432-GI-nEp" sceneMemberID="viewController">
+                <viewController id="432-GI-nEp" customClass="FavoritesController" customModule="PlanMyVacation" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bcS-z8-Dut">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -112,6 +112,9 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="gb9-m3-ylt"/>
+                    <connections>
+                        <outlet property="favoritesTableView" destination="y9v-8B-ql8" id="JF3-dK-83H"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yIg-kb-h7j" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

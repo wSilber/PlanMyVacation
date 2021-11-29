@@ -35,6 +35,9 @@ class ViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDe
     
     @IBOutlet weak var categoryRHL: UISegmentedControl!
     
+//    var storedFavorites: [FavoritedCity] = [] as! [FavoritedCity]
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUsersClosestCity()
@@ -64,6 +67,20 @@ class ViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDe
         alert.addAction(UIAlertAction(title: "Let's go!", style: .default, handler: nil))
         self.present(alert, animated: true)
         
+//        let temp: FavoritedCity = FavoritedCity()
+//        let storedFavorites: [FavoritedCity] = [temp]
+//        do {
+//            // Create JSON Encoder
+//            let encoder = JSONEncoder()
+//
+//            // Encode Note
+//            let data = try encoder.encode(storedFavorites)
+//            UserDefaults.standard.set(data, forKey: "favPlaces")
+//            print(storedFavorites)
+//
+//        } catch {
+//            print("Unable to Encode Note (\(error))")
+//        }
     }
     let alert = UIAlertController(title: "Get Started!", message: "Explore Restaurants, Hotels, and Landmarks near you by clicking the slider or simply search a location!", preferredStyle: .alert)
 
@@ -217,7 +234,8 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         
         //cell.distanceLabel.text = "Distance: " + dist + " miles"
         cell.clipsToBounds = true
-
+        cell.locationName = searchBar.text
+        cell.categoryType = categories
         //cell.ratingLabel.text = String(restaurants[indexPath.row].rating ?? 0.0)
         //cell.priceLabel.text = restaurants[indexPath.row].price ?? "No Info"
         //cell.isClosed = restaurants[indexPath.row].is_closed ?? false
