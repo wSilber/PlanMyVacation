@@ -42,6 +42,8 @@ class CustomCell: UITableViewCell{
        // print(locationName)
         //print(categoryType)
 
+        //source for below code: https://cocoacasts.com/ud-5-how-to-store-a-custom-object-in-user-defaults-in-swift
+        
         
         //let cityArray = try? JSONDecoder().decode([FavoritedCity].self, from: storedData!)
         var cityExists = false
