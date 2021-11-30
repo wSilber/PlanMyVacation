@@ -74,7 +74,7 @@ class FavoritesController: UIViewController, UITableViewDataSource, UITableViewD
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if selectedCity < arrayToDisplay.count
         {
-            return arrayToDisplay[selectedCity].restaurants.count
+            return arrayToDisplay[selectedCity].allPlaces.count
         }
         else
         {
@@ -91,7 +91,7 @@ class FavoritesController: UIViewController, UITableViewDataSource, UITableViewD
         //print(arrayToDisplay[selectedCity].restaurants[indexPath.row])
         if selectedCity > 0
         {
-            myCell.textLabel?.text = arrayToDisplay[selectedCity].restaurants[indexPath.row]
+            myCell.textLabel?.text = arrayToDisplay[selectedCity].allPlaces[indexPath.row]
         }
         return myCell
     }

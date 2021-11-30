@@ -14,6 +14,6 @@ class FavoritedCity : Codable
     var restaurants: [String] = []
     var landmarks: [String] = []
     var hotels: [String] = []
-    
+    var allPlaces: [String] = []
     
 }

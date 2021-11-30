@@ -80,6 +80,7 @@ class CustomCell: UITableViewCell{
                         {
                             storedFavorites[cityIndex].landmarks.append(nameLabel.text ?? "")
                         }
+                        storedFavorites[cityIndex].allPlaces.append(nameLabel.text ?? "")
                         do {
                             // Create JSON Encoder
                             let encoder = JSONEncoder()
@@ -113,6 +114,7 @@ class CustomCell: UITableViewCell{
                         {
                             currCity.landmarks.append(nameLabel.text ?? "")
                         }
+                        currCity.allPlaces.append(nameLabel.text ?? "")
                         do {
                             // Create JSON Encoder
                             let encoder = JSONEncoder()
