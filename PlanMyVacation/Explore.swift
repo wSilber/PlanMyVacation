@@ -43,6 +43,7 @@ class Explore: UIViewController, UICollectionViewDelegate, UICollectionViewDataS
     ////citation: https://www.youtube.com/watch?v=cbeE3OQlU3c
     override func viewDidLoad() {
         super.viewDidLoad()
+        UserDefaults.standard.removeObject(forKey: "favPlaces")
         cityName.text = "Explore San Francisco"
         sliderCollectionView.delegate = self
         sliderCollectionView.dataSource = self

@@ -18,7 +18,7 @@ class FavoritesController: UIViewController, UITableViewDataSource, UITableViewD
     @IBOutlet weak var pickerView: UIPickerView!
     var numOfItems = 0
     var arrayToDisplay:[FavoritedCity] = [] as! [FavoritedCity]
-    var selectedCity = 1
+    var selectedCity = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         favoritesTableView.dataSource = self
@@ -72,7 +72,15 @@ class FavoritesController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if selectedCity < arrayToDisplay.count
+        {
             return arrayToDisplay[selectedCity].restaurants.count
+        }
+        else
+        {
+            return 1
+        }
+       
        
        
     }
@@ -80,7 +88,7 @@ class FavoritesController: UIViewController, UITableViewDataSource, UITableViewD
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let myCell = UITableViewCell(style: .default, reuseIdentifier: "tableViewCell")
         print("trying to display")
-        print(arrayToDisplay[selectedCity].restaurants[indexPath.row])
+        //print(arrayToDisplay[selectedCity].restaurants[indexPath.row])
         if selectedCity > 0
         {
             myCell.textLabel?.text = arrayToDisplay[selectedCity].restaurants[indexPath.row]

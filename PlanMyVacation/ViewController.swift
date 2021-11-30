@@ -67,20 +67,21 @@ class ViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDe
         alert.addAction(UIAlertAction(title: "Let's go!", style: .default, handler: nil))
         self.present(alert, animated: true)
         
-//        let temp: FavoritedCity = FavoritedCity()
-//        let storedFavorites: [FavoritedCity] = [temp]
-//        do {
-//            // Create JSON Encoder
-//            let encoder = JSONEncoder()
-//
-//            // Encode Note
-//            let data = try encoder.encode(storedFavorites)
-//            UserDefaults.standard.set(data, forKey: "favPlaces")
-//            print(storedFavorites)
-//
-//        } catch {
-//            print("Unable to Encode Note (\(error))")
-//        }
+        let temp: FavoritedCity = FavoritedCity()
+        temp.cityName = "Select A City"
+        let storedFavorites: [FavoritedCity] = [temp]
+        do {
+            // Create JSON Encoder
+            let encoder = JSONEncoder()
+
+            // Encode Note
+            let data = try encoder.encode(storedFavorites)
+            UserDefaults.standard.set(data, forKey: "favPlaces")
+            print(storedFavorites)
+
+        } catch {
+            print("Unable to Encode Note (\(error))")
+        }
     }
     let alert = UIAlertController(title: "Get Started!", message: "Explore Restaurants, Hotels, and Landmarks near you by clicking the slider or simply search a location!", preferredStyle: .alert)
 
