@@ -23,8 +23,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <searchBar contentMode="redraw" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9Vb-eF-Aa6">
-                                <rect key="frame" x="18" y="105" width="318" height="44"/>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="9Vb-eF-Aa6">
+                                <rect key="frame" x="18" y="105" width="357" height="44"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7Z7-tv-9r4">
@@ -58,11 +58,6 @@
                                     <action selector="selectCategory:" destination="BYZ-38-t0r" eventType="valueChanged" id="4Pl-qr-bbb"/>
                                 </connections>
                             </segmentedControl>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UEl-At-bRd">
-                                <rect key="frame" x="338" y="105" width="44" height="43"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button" image="starBefore"/>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -74,9 +69,9 @@
                             <constraint firstItem="J6q-6m-VGU" firstAttribute="trailing" secondItem="7Z7-tv-9r4" secondAttribute="trailing" constant="1" id="JFP-aH-fQT"/>
                             <constraint firstItem="fb3-Ws-15l" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="-44" id="S1Z-0h-bc8"/>
                             <constraint firstItem="9Vb-eF-Aa6" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="17" id="XXY-42-2xt"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="9Vb-eF-Aa6" secondAttribute="trailing" constant="31" id="YJb-LP-5BI"/>
                             <constraint firstItem="9Vb-eF-Aa6" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="18" id="a98-d4-4Ln"/>
                             <constraint firstItem="7Z7-tv-9r4" firstAttribute="top" secondItem="J6q-6m-VGU" secondAttribute="bottom" constant="18" id="cZt-T3-WJV"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="9Vb-eF-Aa6" secondAttribute="trailing" constant="15" id="etA-Sw-d4E"/>
                             <constraint firstItem="J6q-6m-VGU" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="162" id="fLK-el-KKB"/>
                             <constraint firstItem="J6q-6m-VGU" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="1" id="gyi-tF-eBF"/>
                             <constraint firstItem="J6q-6m-VGU" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" constant="1" id="nuf-DG-hzM"/>
@@ -184,63 +179,66 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="iRU-FM-yxF">
-                                <rect key="frame" x="60" y="540" width="270" height="27"/>
+                                <rect key="frame" x="60" y="659" width="270" height="27"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </pageControl>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="rVZ-mI-hbM" userLabel="Slider Collection View">
-                                <rect key="frame" x="16" y="103" width="358" height="429"/>
+                                <rect key="frame" x="16" y="127" width="358" height="527"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="yPr-e4-z7b">
-                                    <size key="itemSize" width="378" height="436"/>
+                                    <size key="itemSize" width="358" height="521"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="1BP-Xc-ZJl">
-                                        <rect key="frame" x="0.0" y="-3.6666666666666665" width="378" height="436"/>
+                                        <rect key="frame" x="0.0" y="3" width="358" height="521"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Azv-1G-gpS">
-                                            <rect key="frame" x="0.0" y="0.0" width="378" height="436"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="358" height="521"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="111" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Elg-e8-BYj">
-                                                    <rect key="frame" x="0.0" y="0.0" width="378" height="436"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="378" height="532"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                             </subviews>
                                         </collectionViewCellContentView>
-                                        <size key="customSize" width="378" height="436"/>
+                                        <size key="customSize" width="358" height="521"/>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="8" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zNg-7f-15p">
-                                <rect key="frame" x="33" y="575" width="341" height="168"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <string key="text">I had code from my lab4 of a slideshow so i pasted it here. i thought our app would look better if we have some sort of Explore page instead of users starting directly on the search page. if we wanna add features like "add to My Trips" I think that'd be nice </string>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Explore New Cities!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yfh-dD-TlY">
-                                <rect key="frame" x="85" y="56" width="236" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Explore New Cities!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yfh-dD-TlY">
+                                <rect key="frame" x="77" y="51" width="236" height="32"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="City Placeholder " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gyB-El-xfm">
-                                <rect key="frame" x="101" y="568" width="191" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City Placeholder " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gyB-El-xfm">
+                                <rect key="frame" x="100" y="695" width="191" height="21"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Laa-hS-huz">
+                                <rect key="frame" x="6" y="96" width="377" height="1"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemGray3Color"/>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="nuU-AL-Q5v"/>
                         <color key="backgroundColor" red="0.66351849410844377" green="0.88746948328902564" blue="0.91033534413760475" alpha="0.69470422447317171" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="gyB-El-xfm" firstAttribute="top" secondItem="nuU-AL-Q5v" secondAttribute="top" constant="651" id="3e0-8y-CEb"/>
+                            <constraint firstItem="yfh-dD-TlY" firstAttribute="top" secondItem="nuU-AL-Q5v" secondAttribute="top" constant="7" id="DtB-Ok-gLP"/>
+                            <constraint firstItem="gyB-El-xfm" firstAttribute="leading" secondItem="nuU-AL-Q5v" secondAttribute="leading" constant="100" id="Hjg-a0-ctA"/>
+                            <constraint firstItem="nuU-AL-Q5v" firstAttribute="trailing" secondItem="yfh-dD-TlY" secondAttribute="trailing" constant="77" id="RI9-25-f67"/>
+                            <constraint firstItem="yfh-dD-TlY" firstAttribute="leading" secondItem="nuU-AL-Q5v" secondAttribute="leading" constant="77" id="cbE-Hd-Siw"/>
+                            <constraint firstItem="nuU-AL-Q5v" firstAttribute="trailing" secondItem="gyB-El-xfm" secondAttribute="trailing" constant="99" id="dlK-LZ-MRb"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Explore" image="network" catalog="system" id="xg3-7U-Zal"/>
                     <connections>
@@ -277,9 +275,11 @@
         <image name="airplane" catalog="system" width="128" height="115"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="network" catalog="system" width="128" height="121"/>
-        <image name="starBefore" width="512" height="512"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray3Color">
+            <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

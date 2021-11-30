@@ -36,10 +36,58 @@ class ViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDe
     @IBOutlet weak var categoryRHL: UISegmentedControl!
     
 //    var storedFavorites: [FavoritedCity] = [] as! [FavoritedCity]
-
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+          setUsersClosestCity()
+          searchBar.placeholder = "Search a Location"
+          locationManager.startUpdatingLocation()
+          
+          searchBar.delegate = self
+
+          // Ask for Authorisation from the User.
+          self.locationManager.requestAlwaysAuthorization()
+          // For use in foreground
+          self.locationManager.requestWhenInUseAuthorization()
+
+          if CLLocationManager.locationServicesEnabled() {
+              locationManager.delegate = self
+              locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+              locationManager.startUpdatingLocation()
+          }
+    
+          restaurantsTableView.delegate = self
+          restaurantsTableView.dataSource = self
+          restaurantsTableView.register(UINib(nibName: "CustomCell", bundle: nil), forCellReuseIdentifier: "customCell")
+          
+          selectCategory(categoryRHL)
+          categoryRHL.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: UIControl.State.normal)
+          
+          alert.addAction(UIAlertAction(title: "Let's go!", style: .default, handler: nil))
+          self.present(alert, animated: true)
+          
+          let temp: FavoritedCity = FavoritedCity()
+          temp.cityName = "Select A City"
+          let storedFavorites: [FavoritedCity] = [temp]
+          do {
+              // Create JSON Encoder
+              let encoder = JSONEncoder()
+
+              // Encode Note
+              let data = try encoder.encode(storedFavorites)
+              UserDefaults.standard.set(data, forKey: "favPlaces")
+              print(storedFavorites)
+
+          } catch {
+              print("Unable to Encode Note (\(error))")
+          }
+    }
+    
+    /*
+
+    override func viewDidAppear(_ animated: Bool) {
+        //super.viewDidLoad()
+      
         setUsersClosestCity()
         searchBar.placeholder = "Search a Location"
         locationManager.startUpdatingLocation()
@@ -82,7 +130,9 @@ class ViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDe
         } catch {
             print("Unable to Encode Note (\(error))")
         }
+ 
     }
+ */
     let alert = UIAlertController(title: "Get Started!", message: "Explore Restaurants, Hotels, and Landmarks near you by clicking the slider or simply search a location!", preferredStyle: .alert)
 
     

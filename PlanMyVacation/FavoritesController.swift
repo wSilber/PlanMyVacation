@@ -10,10 +10,6 @@ import UIKit
 
 class FavoritesController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource
 {
-    
-    
-
-    
     @IBOutlet weak var favoritesTableView: UITableView!
     @IBOutlet weak var pickerView: UIPickerView!
     var numOfItems = 0
@@ -80,9 +76,6 @@ class FavoritesController: UIViewController, UITableViewDataSource, UITableViewD
         {
             return 1
         }
-       
-       
-       
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
