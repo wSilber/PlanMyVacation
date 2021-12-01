@@ -51,7 +51,7 @@ extension ViewController{
                     restaurant.name = business.value(forKey: "name") as? String
                     restaurant.id = business.value(forKey: "id") as? String
                     restaurant.rating = business.value(forKey: "rating") as? Float
-                    restaurant.price = business.value(forKey: "price") as? String
+                    restaurant.id = business.value(forKey: "id") as? String
                     restaurant.is_closed = business.value(forKey: "is_closed") as? Bool
                     restaurant.distance = business.value(forKey: "distance") as? Double
                     let address = business.value(forKeyPath: "location.display_address") as? [String]
@@ -61,7 +61,7 @@ extension ViewController{
                     restaurant.hours = business.value(forKey: "hours") as? [String]
                     restaurant.location = business.value(forKey: "location.city") as? String
                     restaurant.url = business.value(forKey: "url") as? String
-
+                    restaurant.reviews = business.value(forKey: "reviews") as? [Any]
                     //STILL NEED TO CITE ABOVE CODE
                     restaurantsList.append(restaurant)
                 }

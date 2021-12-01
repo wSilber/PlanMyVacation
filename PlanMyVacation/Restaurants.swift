@@ -20,4 +20,5 @@ struct Restaurants{
     var imageURL: String?
     var location: String?
     var url: String?
+    var reviews: [Any]?
 }
