@@ -279,7 +279,7 @@ class DetailedViewController: UIViewController {
             print("3 \(reviewid)")
 
             reviewText.text = reviewtext
-            print("4 \(reviewText.text)")
+            print("4 \(reviewtext)")
             view.addSubview(reviewText)
             view.addSubview(reviewID)
                         
