@@ -17,6 +17,8 @@
 		DFF14F6027409F160028B82A /* FetchRestaurantData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF14F5F27409F160028B82A /* FetchRestaurantData.swift */; };
 		DFF14F662740A4320028B82A /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF14F652740A4320028B82A /* CustomCell.swift */; };
 		DFF14F682740A4780028B82A /* CustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DFF14F672740A4780028B82A /* CustomCell.xib */; };
+		E18F855E2758017D00B11EFA /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18F855D2758017D00B11EFA /* ProfileViewController.swift */; };
+		E18F85602758028E00B11EFA /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18F855F2758028E00B11EFA /* EditViewController.swift */; };
 		E1DF17B9273C6ABE005A5951 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DF17B8273C6ABE005A5951 /* AppDelegate.swift */; };
 		E1DF17BB273C6ABE005A5951 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DF17BA273C6ABE005A5951 /* SceneDelegate.swift */; };
 		E1DF17BD273C6ABE005A5951 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DF17BC273C6ABE005A5951 /* ViewController.swift */; };
@@ -55,6 +57,8 @@
 		DFF14F5F27409F160028B82A /* FetchRestaurantData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchRestaurantData.swift; sourceTree = "<group>"; };
 		DFF14F652740A4320028B82A /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		DFF14F672740A4780028B82A /* CustomCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomCell.xib; sourceTree = "<group>"; };
+		E18F855D2758017D00B11EFA /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		E18F855F2758028E00B11EFA /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
 		E1DF17B5273C6ABE005A5951 /* PlanMyVacation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlanMyVacation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1DF17B8273C6ABE005A5951 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E1DF17BA273C6ABE005A5951 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -122,6 +126,8 @@
 				E1DF17B8273C6ABE005A5951 /* AppDelegate.swift */,
 				E1DF17BA273C6ABE005A5951 /* SceneDelegate.swift */,
 				E1DF17BC273C6ABE005A5951 /* ViewController.swift */,
+				E18F855D2758017D00B11EFA /* ProfileViewController.swift */,
+				E18F855F2758028E00B11EFA /* EditViewController.swift */,
 				84CEA1422755920100083906 /* FavoritesController.swift */,
 				E1DF17BE273C6ABE005A5951 /* Main.storyboard */,
 				E1DF17C1273C6ABF005A5951 /* Assets.xcassets */,
@@ -290,12 +296,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E18F85602758028E00B11EFA /* EditViewController.swift in Sources */,
 				DF4A958127548E35005ABBB8 /* favoriteListClass.swift in Sources */,
 				DF5BDE0A275346290015B367 /* Explore.swift in Sources */,
 				DF3BA3EB274B49490088D8D6 /* DetailedViewController.swift in Sources */,
 				DFF14F6027409F160028B82A /* FetchRestaurantData.swift in Sources */,
 				E1DF17BD273C6ABE005A5951 /* ViewController.swift in Sources */,
 				E1DF17B9273C6ABE005A5951 /* AppDelegate.swift in Sources */,
+				E18F855E2758017D00B11EFA /* ProfileViewController.swift in Sources */,
 				E1DF17BB273C6ABE005A5951 /* SceneDelegate.swift in Sources */,
 				84CEA141275577C000083906 /* FavoritedCity.swift in Sources */,
 				DFF14F5E27409E710028B82A /* Restaurants.swift in Sources */,
