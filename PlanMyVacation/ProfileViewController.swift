@@ -12,7 +12,7 @@ class ProfileViewController: UIViewController {
     @IBAction func editBtn(_ sender: Any) {
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
         
-        let editProfileController = storyboard?.instantiateViewController(identifier: "EditProfileController") as! EditViewController
+        let editProfileController = storyBoard.instantiateViewController(identifier: "EditProfileController") as! EditProfileViewController
         
         self.present(editProfileController, animated: true, completion: nil)
     }
