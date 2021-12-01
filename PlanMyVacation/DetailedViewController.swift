@@ -131,16 +131,46 @@ class DetailedViewController: UIViewController {
         }
         isClosedView.font = isClosedView.font?.withSize(18)
         
+        
+        let yelpURLFrame = CGRect(x: view.frame.midX+30, y: 300, width: 100, height: 80)
+        let theURLView = UIButton(frame: yelpURLFrame)
+        theURLView.setImage(UIImage(named:"yelpURL"), for: .normal)
+        theURLView.addTarget(self, action: #selector(saveImage(_:)), for: .touchUpInside)
+//        if let url = restaurants!.url {
+//            theURLView.text = "URL: " + String(url)
+//        }
+//        if restaurants!.url == nil || restaurants!.url == "" {
+//            thePhoneView.text = "URL: Unavailable"
+//        }
+//        theURLView.font = theURLView.font?.withSize(18)
+        view.addSubview(theURLView)
 //        let hoursFrame = CGRect(x: view.frame.midX-150, y: 500, width: 300, height: 80)
 //        let theHoursView = UITextView(frame: hoursFrame)
 //        //addressView.backgroundColor = UIColor.blue
 //        theHoursView.text = "Hours: " + String((restaurants?.hours?[0])!) + String((restaurants?.hours?[1])!)
 //        theHoursView.font = theHoursView.font?.withSize(18)
 //        view.addSubview(theHoursView)
-
+        
         view.addSubview(isClosedView)
 
         // Do any additional setup after loading the view.
+    }
+    
+    let alert = UIAlertController(title: "OK", message: "There is no Yelp URL for this place", preferredStyle: .alert)
+    
+    
+    @objc func saveImage(_ sender: UIButton) {
+        sender.setImage(UIImage(named: "YelpURL2"), for: UIControl.State.normal)
+        if let myUrl = restaurants!.url{
+            UIApplication.shared.open(URL(string: "\(myUrl)")!)
+            //https://stackoverflow.com/questions/42389649/openurl-was-deprecated-in-ios-10-0-please-use-openurloptionscompletionhandl
+            alert.addAction(UIAlertAction(title: "No URL", style: .default, handler: nil))
+        }
+        if restaurants!.url == nil || restaurants!.url == "" {
+            alert.addAction(UIAlertAction(title: "No URL", style: .default, handler: nil))
+            self.present(alert, animated: true)
+        }
+        
     }
     
 //    @objc func insertfavoritePlace(_ sender: UIButton){
