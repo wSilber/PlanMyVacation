@@ -53,7 +53,7 @@
                                     <segment title="Landmarks"/>
                                 </segments>
                                 <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="selectedSegmentTintColor" red="0.34383625470000001" green="0.60296141700000006" blue="0.54038463830000005" alpha="0.56866205960000005" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="selectedSegmentTintColor" red="0.224861228" green="0.51733082320000001" blue="0.29381461710000001" alpha="0.51877474619999997" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <action selector="selectCategory:" destination="BYZ-38-t0r" eventType="valueChanged" id="4Pl-qr-bbb"/>
                                 </connections>
@@ -279,6 +279,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
+                                <color key="backgroundColor" red="0.33585020180000003" green="0.77267950060000001" blue="0.43883820849999999" alpha="0.78363390036829295" colorSpace="custom" customColorSpace="sRGB"/>
                                 <viewLayoutGuide key="contentLayoutGuide" id="Olq-2J-kz7"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="b67-Xe-4vr"/>
                             </scrollView>
@@ -298,7 +299,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YLh-D8-2nJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3370.7692307692305" y="826.77725118483409"/>
+            <point key="canvasLocation" x="3577" y="827"/>
         </scene>
         <!--Edit Profile View Controller-->
         <scene sceneID="SoR-A5-l85">
@@ -322,8 +323,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Resteraunts" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mqe-Yl-cul">
-                                <rect key="frame" x="98" y="449" width="92" height="39"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Restaurants" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mqe-Yl-cul">
+                                <rect key="frame" x="100" y="449" width="92" height="39"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -341,7 +342,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" systemColor="opaqueSeparatorColor"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Cities" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ayr-ix-G5h">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Locations" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ayr-ix-G5h">
                                 <rect key="frame" x="16" y="449" width="85" height="39"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -349,7 +350,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7fr-hu-mOh">
-                                <rect key="frame" x="98" y="419" width="92" height="39"/>
+                                <rect key="frame" x="100" y="419" width="92" height="39"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <nil key="textColor"/>
@@ -376,14 +377,14 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="person.crop.circle.badge.plus" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="zs3-gq-bPu">
-                                <rect key="frame" x="105.33333333333348" y="119.66666666666674" width="167" height="180"/>
+                                <rect key="frame" x="109" y="120" width="163" height="180"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" red="0.33585020180000003" green="0.77267950060000001" blue="0.43883820849999999" alpha="0.61995328530000005" colorSpace="custom" customColorSpace="sRGB"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kRh-aS-vFR">
                                 <rect key="frame" x="198" y="513" width="176" height="38"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.33585020180000003" green="0.77267950060000001" blue="0.43883820849999999" alpha="0.61995328530000005" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="29"/>
                                 <state key="normal" title="Cancel">
                                     <color key="titleColor" systemColor="labelColor"/>
@@ -396,7 +397,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P0Y-UA-o6E">
                                 <rect key="frame" x="16" y="513" width="174" height="38"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.33585020180000003" green="0.77267950060000001" blue="0.43883820849999999" alpha="0.61995328530000005" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="29"/>
                                 <state key="normal" title="Save">
                                     <color key="titleColor" systemColor="labelColor"/>
@@ -421,7 +422,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="doh-cg-Ngk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4170.7692307692305" y="824.64454976303318"/>
+            <point key="canvasLocation" x="3576.9230769230767" y="1628.6729857819905"/>
         </scene>
         <!--My Trips-->
         <scene sceneID="YjT-8H-beQ">
@@ -501,7 +502,7 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="nuU-AL-Q5v"/>
-                        <color key="backgroundColor" red="0.66351849410844377" green="0.88746948328902564" blue="0.91033534413760475" alpha="0.69470422447317171" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.49719714205544119" green="0.94953728177291397" blue="0.73132822324706992" alpha="0.73361008833238739" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="gyB-El-xfm" firstAttribute="top" secondItem="nuU-AL-Q5v" secondAttribute="top" constant="651" id="3e0-8y-CEb"/>
