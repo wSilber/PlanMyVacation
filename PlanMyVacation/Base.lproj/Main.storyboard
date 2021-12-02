@@ -287,6 +287,14 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Profile" image="person.circle" catalog="system" id="VR8-vI-ld2"/>
+                    <connections>
+                        <outlet property="ResterauntsCount" destination="p3Y-Is-UZq" id="Ro6-po-YTj"/>
+                        <outlet property="citiesCount" destination="ysZ-aN-ImB" id="gQ0-9k-e2d"/>
+                        <outlet property="hotelsCount" destination="SP0-r4-q4V" id="Zub-ri-eCB"/>
+                        <outlet property="landMarksCount" destination="jZe-e0-Uam" id="ccu-5n-8sV"/>
+                        <outlet property="profilePictureView" destination="4rT-KR-pZP" id="aH2-g3-4CF"/>
+                        <outlet property="usernameLabel" destination="zAx-5N-4dE" id="Oot-Ng-DFd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YLh-D8-2nJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -403,7 +411,11 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <connections>
+                        <outlet property="citiesCount" destination="ahe-bt-Ukd" id="vn9-dW-xl2"/>
+                        <outlet property="hotelsCount" destination="8Rp-Fs-K6W" id="Y5E-mx-xll"/>
+                        <outlet property="landmarksCount" destination="fvx-ob-5K2" id="kS3-N2-i7v"/>
                         <outlet property="profilePicture" destination="7iH-Q2-tjs" id="b5L-QI-HXt"/>
+                        <outlet property="resterauntCount" destination="7fr-hu-mOh" id="pmP-n5-dKA"/>
                         <outlet property="userNameInput" destination="yRu-hH-KoY" id="L1l-z0-NJb"/>
                     </connections>
                 </viewController>
