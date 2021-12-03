@@ -6,9 +6,13 @@
 //
 
 import UIKit
+import MapKit
+import CoreLocation
 
-class Explore: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource{
+class Explore: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource,MKMapViewDelegate, CLLocationManagerDelegate {
     @IBOutlet weak var cityName: UILabel!
+    @IBOutlet weak var mMapView: MKMapView!
+        
     var timer = Timer()
     var counter = 0
     var imgArr = [ UIImage(named: "image1"),
@@ -41,8 +45,10 @@ class Explore: UIViewController, UICollectionViewDelegate, UICollectionViewDataS
     @IBOutlet weak var sliderCollectionView: UICollectionView!
 
     ////citation: https://www.youtube.com/watch?v=cbeE3OQlU3c
+   
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         cityName.text = "Explore San Francisco"
         sliderCollectionView.delegate = self
         sliderCollectionView.dataSource = self
@@ -52,11 +58,12 @@ class Explore: UIViewController, UICollectionViewDelegate, UICollectionViewDataS
             self.timer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(self.changeImage), userInfo: nil, repeats: true)
         }
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     
     //citation: https://www.youtube.com/watch?v=cbeE3OQlU3c
     @objc func changeImage() {
@@ -85,7 +92,6 @@ class Explore: UIViewController, UICollectionViewDelegate, UICollectionViewDataS
         // Pass the selected object to the new view controller.
     }
     */
-
 }
 
 extension Explore: UICollectionViewDelegateFlowLayout {

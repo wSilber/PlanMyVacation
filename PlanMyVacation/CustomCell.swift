@@ -7,12 +7,13 @@
 
 import UIKit
 
-class CustomCell: UITableViewCell{
+class CustomCell: UITableViewCell {
 
     var restaurants: Restaurants?
     var image: UIImage?
     var locationName: String?
     var categoryType: String?
+    @IBOutlet weak var cell: UILabel!
     
     @IBOutlet weak var parentView: UIView!
     
@@ -26,28 +27,30 @@ class CustomCell: UITableViewCell{
     //var storedFavorites: [FavoritedCity] = UserDefaults.standard.object(forKey: "favPlaces") as? [FavoritedCity] ?? []
 //    var storedFavorites: [FavoritedCity] = []
     
-
-
     override func awakeFromNib() {
         super.awakeFromNib()
+        selectionStyle = .none
         // Initialization code
+        nameLabel.layer.shadowColor = UIColor.darkGray.cgColor
+        nameLabel.layer.shadowOffset = CGSize(width: 2.0, height: 2.0)
+        nameLabel.layer.shadowOpacity = 0.5
+        nameLabel.layer.shadowRadius = 2
+        nameLabel.layer.cornerRadius = 13
+        nameLabel.layer.masksToBounds = true
     }
     
-   // let favoritePlaceList = favoriteListClass()
     
     
-    @IBAction func insertFav(_ sender: Any) {
-
-        favButton.setImage(UIImage(named:"starAfter"), for: UIControl.State.normal) ///also the add button works but it changes the image for multiple cells instead of just the one we clicked. not sure how to fix this  but i know it is something to do with UIControl.State.normal. Not a pressing issue tho bc  it is correctly adding the specific name to the list
-       // print(locationName)
-        //print(categoryType)
-
+    @IBAction func insertFav(_ sender: UIButton!) {
+        favButton.setImage(UIImage(named:"starAfter"), for: UIControl.State.normal)
+        
         //source for below code: https://cocoacasts.com/ud-5-how-to-store-a-custom-object-in-user-defaults-in-swift
         
         
         //let cityArray = try? JSONDecoder().decode([FavoritedCity].self, from: storedData!)
         var cityExists = false
         var cityIndex = 0
+        
         
         if let data = UserDefaults.standard.data(forKey: "favPlaces") {
             
@@ -71,6 +74,7 @@ class CustomCell: UITableViewCell{
                         if categoryType == "restaurants"
                         {
                             storedFavorites[cityIndex].restaurants.append(nameLabel.text ?? "")
+                            
                         }
                         if categoryType == "hotels"
                         {
@@ -95,7 +99,7 @@ class CustomCell: UITableViewCell{
                         }
                         //UserDefaults.standard.set(storedFavorites, forKey: "favPlaces")
                         for item in storedFavorites {
-                            print (item.restaurants)
+                            //print (item.restaurants)
                         }
                     }
                     else

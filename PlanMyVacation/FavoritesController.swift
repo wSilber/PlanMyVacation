@@ -21,6 +21,7 @@ class FavoritesController: UIViewController, UITableViewDataSource, UITableViewD
         favoritesTableView.delegate = self
         pickerView.delegate = self
         pickerView.dataSource = self
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -47,8 +48,8 @@ class FavoritesController: UIViewController, UITableViewDataSource, UITableViewD
                 print("Unable to Decode Notes (\(error))")
             }
         }
-        
     }
+    
     
     //source: https://medium.com/@raj.amsarajm93/create-dropdown-using-uipickerview-4471e5c7d898
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -77,7 +78,7 @@ class FavoritesController: UIViewController, UITableViewDataSource, UITableViewD
             return 1
         }
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let myCell = UITableViewCell(style: .default, reuseIdentifier: "tableViewCell")
         print("trying to display")
@@ -86,6 +87,24 @@ class FavoritesController: UIViewController, UITableViewDataSource, UITableViewD
         {
             myCell.textLabel?.text = arrayToDisplay[selectedCity].allPlaces[indexPath.row]
         }
+        if(indexPath.row % 2 == 0){
+            myCell.backgroundColor = UIColor.lightGray
+        }
+        else{
+            myCell.backgroundColor = UIColor.gray
+        }
+    
+        myCell.textLabel?.numberOfLines = 0
+        myCell.textLabel?.textColor = UIColor.white
+        myCell.textLabel?.textAlignment = .center
+
+        myCell.textLabel?.layer.shadowColor = UIColor.black.cgColor
+        myCell.textLabel?.layer.shadowOffset = CGSize(width: 0, height: 1.0)
+        myCell.textLabel?.layer.shadowRadius = 1.0
+        myCell.textLabel?.layer.shadowOpacity = 0.5
+
+        myCell.layer.cornerRadius = 10
+        
         return myCell
     }
 }

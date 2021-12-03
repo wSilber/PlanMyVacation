@@ -31,7 +31,6 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var hotelsCount: UILabel!
     @IBOutlet weak var landMarksCount: UILabel!
     
-    
     let profileController: ProfileController = ProfileController()
     
     override func viewDidLoad() {

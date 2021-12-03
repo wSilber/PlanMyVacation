@@ -6,19 +6,17 @@
 //
 
 import UIKit
+import Foundation
+import MapKit
+import CoreLocation
 
 class DetailedViewController: UIViewController {
     var restaurants: Restaurants?
     var image: UIImage?
-//    let REVIEWSFRAME = CGRect(x: 150, y: 150, width: 500, height: 500)
-//    let REVIEWSVIEW = UIView(frame: REVIEWSFRAME)
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
-        
-        
-        
         let imageFrame = CGRect(x: view.frame.midX-150, y: 500, width: 300, height: 250)
         let imageView = UIImageView(frame: imageFrame)
 
@@ -41,7 +39,7 @@ class DetailedViewController: UIViewController {
         
         let theNameFrame = CGRect(x: view.frame.midX-150, y: 150, width: 300, height: 100)
         let nameView = UITextView(frame: theNameFrame)
-        //nameView.backgroundColor = UIColor.blue
+
         if let placeName = restaurants!.name{
             nameView.text = "Name: " + (placeName)
         }
@@ -134,16 +132,22 @@ class DetailedViewController: UIViewController {
         let yelpURLFrame = CGRect(x: view.frame.midX+30, y: 300, width: 100, height: 80)
         let theURLView = UIButton(frame: yelpURLFrame)
         theURLView.setImage(UIImage(named:"yelpURL"), for: .normal)
-        theURLView.addTarget(self, action: #selector(saveImage(_:)), for: .touchUpInside)
+        theURLView.addTarget(self, action: #selector(openYelpURL(_:)), for: .touchUpInside)
         view.addSubview(theURLView)
 
         let reviewButtonFrame = CGRect(x: view.frame.midX+100, y: 300, width: 100, height: 80)
         let theReviewButtonView = UIButton(frame: reviewButtonFrame)
         theReviewButtonView.setImage(UIImage(named:"reviewButton"), for: .normal)
-        
         theReviewButtonView.addTarget(self, action: #selector(getReviews(_:)), for: .touchUpInside)
 
         view.addSubview(theReviewButtonView)
+        
+        
+        let helpButtonFrame = CGRect(x: view.frame.midX+100, y: 100, width: 70, height: 70)
+        let helpButtonView = UIButton(frame: helpButtonFrame)
+        helpButtonView.setImage(UIImage(named:"helpButton"), for: .normal)
+        helpButtonView.addTarget(self, action: #selector(helpButton(_:)), for: .touchUpInside)
+        view.addSubview(helpButtonView)
 
 //
 //        let theReviewsFrame = CGRect(x: view.frame.midX-150, y: 400, width: 300, height: 80)
@@ -183,8 +187,7 @@ class DetailedViewController: UIViewController {
 
     let alert = UIAlertController(title: "OK", message: "There is no Yelp URL for this place", preferredStyle: .alert)
     
-    @objc func saveImage(_ sender: UIButton) {
-
+    @objc func openYelpURL(_ sender: UIButton) {
         sender.setImage(UIImage(named: "YelpURL2"), for: UIControl.State.normal)
         if let myUrl = restaurants!.url{
             UIApplication.shared.open(URL(string: "\(myUrl)")!)
@@ -194,28 +197,83 @@ class DetailedViewController: UIViewController {
             alert.addAction(UIAlertAction(title: "No URL", style: .default, handler: nil))
             self.present(alert, animated: true)
         }
-        
+    }
+    
+
+    
+    func retrieveAPIReviews(completionHandler: @escaping ([Reviews]?, Error?) -> Void) {
+        print("getAPIReviews funtion")
+
+        if let resId = restaurants?.id {
+            print("valid resid")
+            let apikey = "hWP1FMQbuRIU3Hvtt9_RMCJqFloDAhUoXyjw18nHWZJ9UrvAY9IOzU5zqZWN0FL3T8CtyXsNheVGCZT5ffZfD9ziVnvwKji0PnRX6na9ehtp8ev-kue9axtOYpCNYXYx"
+        let baseURL = "https://api.yelp.com/v3/businesses/\(resId)/reviews"
+        let url = URL(string: baseURL)
+        var request = URLRequest(url: url!)
+        request.setValue("Bearer \(apikey)", forHTTPHeaderField: "Authorization")
+        request.httpMethod = "GET"
+            URLSession.shared.dataTask(with: request) { (data, response, error) in
+                do {
+                    let json = try JSONSerialization.jsonObject(with: data!, options: []) as! [String: Any]
+                    guard let resp = json as? NSDictionary else { return }
+                    guard let reviews = resp.value(forKey: "reviews") as? [NSDictionary] else { return }
+                    var reviewsList: [Reviews] = []
+                    
+                    for review in reviews {
+                        var reviewOne = Reviews()
+                        reviewOne.id = review.value(forKey: "id") as? String
+                        reviewOne.text = review.value(forKey: "text") as? String
+                        reviewsList.append(reviewOne)
+                        //print(reviewsList)
+                    }
+                    completionHandler(reviewsList, nil)
+                } catch {
+                    print("Caught error")
+                    completionHandler(nil, error)
+                }
+            }.resume()
+    }
+    }
+ 
+    
+        var reviews1: [Reviews] = []
+        @objc func getReviews(_ sender: UIButton) {
+            sender.setImage(UIImage(named: "reviewButton2"), for: UIControl.State.normal)
+            retrieveAPIReviews(){(response, error) in
+                if let response = response {
+                    self.reviews1 = response
+                    DispatchQueue.main.async {
+                        let modalVC = ReviewModalView()
+                        modalVC.modalPresentationStyle = .overCurrentContext
+                        modalVC.reviewsModal = self.reviews1
+                        self.present(modalVC, animated: false)
+                    }
+                }
+            }
+            print("reviews \(self.reviews1)")
+
+//            let modalVC = ReviewModalView()
+//            modalVC.reviewsModal = self.reviews
+//            print("indetailed reviews \(reviews)")
+//            print("indetailed modal \(modalVC.reviewsModal)")
+//            modalVC.modalPresentationStyle = .overCurrentContext
+//            self.present(modalVC, animated: false)
+        }
+            
+           
+    @objc func helpButton(_ sender: UIButton) {
+        sender.setImage(UIImage(named: "helpButton2"), for: UIControl.State.normal)
+        let vc = CustomModalViewController()
+        vc.modalPresentationStyle = .overCurrentContext
+        self.present(vc, animated: false)
     }
 
-    @objc func getReviews(_ sender: UIButton) {
-//        animatePresentContainer()
-//        animateShowDimmedView()
-//        setupConstraints()
-//        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.handleCloseAction))
-//        dimmedView.addGestureRecognizer(tapGesture)
-        
-        var reviewtext: String = ""
-        var reviewid: String = ""
-        
-        sender.setImage(UIImage(named: "reviewButton2"), for: UIControl.State.normal)
 
-        
+        /*
                 if let resId = restaurants?.id {
                     print("valid resid")
                     let apikey = "hWP1FMQbuRIU3Hvtt9_RMCJqFloDAhUoXyjw18nHWZJ9UrvAY9IOzU5zqZWN0FL3T8CtyXsNheVGCZT5ffZfD9ziVnvwKji0PnRX6na9ehtp8ev-kue9axtOYpCNYXYx"
-        
                 let baseURL = "https://api.yelp.com/v3/businesses/\(resId)/reviews"
-        
                 let url = URL(string: baseURL)
                 var request = URLRequest(url: url!)
                 request.setValue("Bearer \(apikey)", forHTTPHeaderField: "Authorization")
@@ -235,30 +293,15 @@ class DetailedViewController: UIViewController {
                         }.resume()
                         }
         */
-        
-        
-        
- 
- 
-                     
-            
             
     //try 2
-            let thereviewframe = CGRect(x: view.frame.midX-150, y: view.frame.midY-150, width: 300, height: 400)
-            let reviewText = UITextView(frame: thereviewframe)
-            let reviewID = UITextView(frame: thereviewframe)
-            reviewText.backgroundColor = UIColor.gray
-            reviewID.backgroundColor = UIColor.gray
-                    
-         
-
-            Foundation.URLSession.shared.dataTask(with: request) { (data, response, error) in
+            URLSession.shared.dataTask(with: request) { (data, response, error) in
                 do {
                     let json = try JSONSerialization.jsonObject(with: data!, options: []) as! [String: Any]
                     guard let resp = json as? NSDictionary else { return }
                     guard let reviews = resp.value(forKey: "reviews") as? [NSDictionary] else { return }
                     var reviewsList: [Reviews] = []
-                    
+
                     for review in reviews {
                         var reviewOne = Reviews()
                         reviewOne.id = review.value(forKey: "id") as? String
@@ -268,13 +311,12 @@ class DetailedViewController: UIViewController {
                         print("1 \(reviewid)")
                         reviewtext = (reviewOne.text)!
                         print("2 \(reviewtext)")
-
                     }
                 } catch {
                     print("Caught error")
                 }
             }.resume()
-                    
+
             reviewID.text = reviewid
             print("3 \(reviewid)")
 
@@ -282,13 +324,7 @@ class DetailedViewController: UIViewController {
             print("4 \(reviewtext)")
             view.addSubview(reviewText)
             view.addSubview(reviewID)
-                        
-    }
-        
-        
-}
-    
-    
+        */
     
     //ModalView
     lazy var containerView: UIView = {
@@ -316,17 +352,14 @@ class DetailedViewController: UIViewController {
     }
     
     func animateDismissView() {
-        // hide main container view by updating bottom constraint in animation block
         UIView.animate(withDuration: 0.3) {
             self.containerViewBottomConstraint?.constant = self.defaultHeight
-            // call this to trigger refresh constraint
             self.view.layoutIfNeeded()
         }
                 dimmedView.alpha = maxDimmedAlpha
         UIView.animate(withDuration: 0.4) {
             self.dimmedView.alpha = 0
         } completion: { _ in
-            // once done, dismiss without animation
             self.dismiss(animated: false)
         }
     }
@@ -338,12 +371,6 @@ class DetailedViewController: UIViewController {
             self.dimmedView.alpha = self.maxDimmedAlpha
         }
     }
-    
-    
-//    @objc func getReviews() {
-//        sender.setImage(UIImage(named: "reviewButton2"), for: UIControl.State.normal)
-//    }
-
     
     func setupView() {
         view.backgroundColor = .clear
@@ -364,10 +391,7 @@ class DetailedViewController: UIViewController {
             view.addSubview(containerView)
             dimmedView.translatesAutoresizingMaskIntoConstraints = false
             containerView.translatesAutoresizingMaskIntoConstraints = false
-            
-            // 5. Set static constraints
             NSLayoutConstraint.activate([
-                // set dimmedView edges to superview
                 dimmedView.topAnchor.constraint(equalTo: view.topAnchor),
                 dimmedView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
                 dimmedView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -377,11 +401,8 @@ class DetailedViewController: UIViewController {
                 containerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             ])
             
-            // 6. Set container to default height
             containerViewHeightConstraint = containerView.heightAnchor.constraint(equalToConstant: defaultHeight)
-            // 7. Set bottom constant to 0
         containerViewBottomConstraint = containerView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: defaultHeight)
-            // Activate constraints
             containerViewHeightConstraint?.isActive = true
             containerViewBottomConstraint?.isActive = true
         }

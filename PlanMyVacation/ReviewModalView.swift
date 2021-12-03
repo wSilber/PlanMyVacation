@@ -1,37 +1,64 @@
 //
-//  CustomModalViewController.swift
+//  ReviewModalView.swift
 //  PlanMyVacation
 //
-//  Created by Simran Ajwani on 12/1/21.
+//  Created by Simran Ajwani on 12/2/21.
 //
 
 import UIKit
 
-class CustomModalViewController: UIViewController {
-    @IBOutlet weak var helpInfo: UILabel!
-    
-    var restaurants: Restaurants?
-    var reviews: Reviews?
-    
+class ReviewModalView: UIViewController {
+    var reviewsModal: [Reviews] = []
+
     lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Need some help?"
+        label.text = "Most Recent Reviews"
         label.font = .boldSystemFont(ofSize: 20)
         return label
     }()
     
     lazy var notesLabel: UILabel = {
         let label = UILabel()
-        label.text = "For each location, you get provided additional information. Options include pricing, rating, address, phone number, and availability. For detailed information, feel free to click the Yelp button. To look at most recent reviews, click the reviews button. For any additional help, please contact +1 123-456-7890"
-        label.font = .systemFont(ofSize: 16)
+        if(reviewsModal.count >= 1) {
+        label.text = ("User ID " + (reviewsModal[0].id ?? "No User Id")) + (": " + (reviewsModal[0].text ?? "No Review"))
+        label.font = .systemFont(ofSize: 13)
         label.textColor = .darkGray
-        label.numberOfLines = 0
+        label.numberOfLines = 5
+        }
         return label
+    }()
+    lazy var notesLabel2: UILabel = {
+        let label2 = UILabel()
+        if(reviewsModal.count >= 2){
+        label2.text = ("User ID " + (reviewsModal[1].id ?? "No User Id")) + (": " + (reviewsModal[1].text ?? "No Review"))
+        label2.font = .systemFont(ofSize: 13)
+        label2.textColor = .darkGray
+        label2.numberOfLines = 5
+        }
+        return label2
+    }()
+    lazy var notesLabel3: UILabel = {
+        let label3 = UILabel()
+        if(reviewsModal.count >= 3){
+        label3.text = ("User ID " + (reviewsModal[2].id ?? "No User Id")) + (": " + (reviewsModal[2].text ?? "No Review"))
+        label3.font = .systemFont(ofSize: 13)
+        label3.textColor = .darkGray
+        label3.numberOfLines = 5
+        }
+        return label3
+    }()
+    lazy var additionalLabel: UILabel = {
+        let label4 = UILabel()
+        label4.text = ("For more information on reviews, please click the Yelp button")
+        label4.font = .systemFont(ofSize: 15)
+        label4.textColor = UIColor.black
+        label4.numberOfLines = 5
+        return label4
     }()
     
     lazy var contentStackView: UIStackView = {
         let spacer = UIView()
-        let stackView = UIStackView(arrangedSubviews: [titleLabel, notesLabel, spacer])
+        let stackView = UIStackView(arrangedSubviews: [titleLabel, notesLabel,notesLabel2,notesLabel3, spacer, additionalLabel,spacer])
         stackView.axis = .vertical
         stackView.spacing = 12.0
 //        stackView.backgroundColor = UIColor(red: 69, green: 179, blue: 124, alpha: 0.5)
@@ -56,7 +83,7 @@ class CustomModalViewController: UIViewController {
             return view
         }()
         
-        let defaultHeight: CGFloat = 300
+        let defaultHeight: CGFloat = 500
     
     var containerViewHeightConstraint: NSLayoutConstraint?
         var containerViewBottomConstraint: NSLayoutConstraint?
@@ -71,6 +98,7 @@ class CustomModalViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("reviewmodalview \(reviewsModal)")
         setupView()
         setupConstraints()
         // tap gesture on dimmed view to dismiss
@@ -188,6 +216,16 @@ class CustomModalViewController: UIViewController {
     
     
     
+
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+    }
+    */
 
     /*
     // MARK: - Navigation

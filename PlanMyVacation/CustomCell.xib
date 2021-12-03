@@ -24,7 +24,7 @@
                                 <rect key="frame" x="51" y="60" width="214" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YHT-AG-Kfn">
@@ -37,7 +37,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ajm-LG-0Am">
-                                <rect key="frame" x="284" y="49" width="48" height="43"/>
+                                <rect key="frame" x="290" y="49" width="46" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <rect key="contentStretch" x="0.0" y="0.0" width="0.94999999999999996" height="1"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="1"/>
@@ -59,7 +59,7 @@
                 <outlet property="nameLabel" destination="YHT-AG-Kfn" id="hFH-5c-ioY"/>
                 <outlet property="parentView" destination="pm8-zd-ZEq" id="R0k-5G-FEq"/>
             </connections>
-            <point key="canvasLocation" x="130.43478260869566" y="46.875"/>
+            <point key="canvasLocation" x="240.57971014492756" y="-11.383928571428571"/>
         </tableViewCell>
     </objects>
     <resources>

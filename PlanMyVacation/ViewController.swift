@@ -22,7 +22,6 @@ class ViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDe
     var CPlatitude: Double = 38.627003
     var CPlongitude: Double = -90.19940200
     var location = CLLocation(latitude: 38.627003, longitude: -90.19940200)
-
     
     var restaurants: [Restaurants] = []
     var favoritesViewController: [Restaurants] = []
@@ -99,7 +98,8 @@ class ViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDe
         // For use in foreground
         self.locationManager.requestWhenInUseAuthorization()
 
-        if CLLocationManager.locationServicesEnabled() {
+        if        cell.backgroundColor = .white
+ CLLocationManager.locationServicesEnabled() {
             locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
             locationManager.startUpdatingLocation()
@@ -142,7 +142,6 @@ class ViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDe
         CPlatitude = locValue.latitude
         CPlongitude = locValue.longitude
         location = CLLocation(latitude: CPlatitude, longitude: CPlongitude)
-//        print("locationManager \(location)")
     }
 
     func setUsersClosestCity(){
@@ -248,12 +247,16 @@ class ViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDe
                             }
                         }
         }
+        print("restaurants \(self.restaurants)")
     }
     
 }
 
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
+    private func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath , animated: true)
+    }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailedVC = DetailedViewController()
         detailedVC.restaurants = restaurants[indexPath.row]
@@ -270,7 +273,6 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath) as! CustomCell
-        
         cell.nameLabel.text = restaurants[indexPath.row].name
         restaurants[indexPath.row].location = searchedCity
         if let ratingnotnill = restaurants[indexPath.row].rating {
@@ -285,6 +287,8 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         
         //cell.distanceLabel.text = "Distance: " + dist + " miles"
         cell.clipsToBounds = true
+        cell.backgroundColor = .clear
+
         cell.locationName = searchBar.text
         cell.categoryType = categories
         //cell.ratingLabel.text = String(restaurants[indexPath.row].rating ?? 0.0)
