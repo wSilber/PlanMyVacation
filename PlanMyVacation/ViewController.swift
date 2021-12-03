@@ -258,9 +258,9 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         tableView.deselectRow(at: indexPath , animated: true)
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let detailedVC = DetailedViewController()
-        detailedVC.restaurants = restaurants[indexPath.row]
-        navigationController?.pushViewController(detailedVC, animated: true)
+//        let detailedVC = DetailedViewController()
+//        detailedVC.restaurants = restaurants[indexPath.row]
+//        navigationController?.pushViewController(detailedVC, animated: true)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -271,8 +271,15 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         return 100
     }
 
+    func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+        let detailedVC = DetailedViewController()
+        detailedVC.restaurants = restaurants[indexPath.row]
+        navigationController?.pushViewController(detailedVC, animated: true)    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath) as! CustomCell
+        
+        cell.accessoryType = .detailButton
         cell.nameLabel.text = restaurants[indexPath.row].name
         restaurants[indexPath.row].location = searchedCity
         if let ratingnotnill = restaurants[indexPath.row].rating {

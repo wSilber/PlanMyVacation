@@ -28,14 +28,14 @@
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7Z7-tv-9r4">
-                                <rect key="frame" x="18" y="220" width="356" height="515"/>
+                                <rect key="frame" x="30" y="220" width="360" height="515"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CustomCell" id="YZ6-RX-eMU" customClass="CustomCell" customModule="PlanMyVacation" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="24.333333969116211" width="356" height="44"/>
+                                        <rect key="frame" x="0.0" y="24.333333969116211" width="360" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="YZ6-RX-eMU" id="9Je-HA-h4N">
-                                            <rect key="frame" x="0.0" y="0.0" width="356" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="360" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -63,10 +63,10 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="fb3-Ws-15l" secondAttribute="trailing" constant="20" symbolic="YES" id="9ac-Fd-M1h"/>
-                            <constraint firstItem="9Vb-eF-Aa6" firstAttribute="leading" secondItem="7Z7-tv-9r4" secondAttribute="leading" id="BAK-1V-4N0"/>
+                            <constraint firstItem="9Vb-eF-Aa6" firstAttribute="leading" secondItem="7Z7-tv-9r4" secondAttribute="leading" constant="-12" id="BAK-1V-4N0"/>
                             <constraint firstItem="fb3-Ws-15l" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="168" id="BX9-SX-NdQ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="7Z7-tv-9r4" secondAttribute="bottom" constant="26" id="HXQ-vY-ddM"/>
-                            <constraint firstItem="J6q-6m-VGU" firstAttribute="trailing" secondItem="7Z7-tv-9r4" secondAttribute="trailing" constant="1" id="JFP-aH-fQT"/>
+                            <constraint firstItem="J6q-6m-VGU" firstAttribute="trailing" secondItem="7Z7-tv-9r4" secondAttribute="trailing" constant="-15" id="JFP-aH-fQT"/>
                             <constraint firstItem="fb3-Ws-15l" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="-44" id="S1Z-0h-bc8"/>
                             <constraint firstItem="9Vb-eF-Aa6" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="17" id="XXY-42-2xt"/>
                             <constraint firstItem="9Vb-eF-Aa6" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="18" id="a98-d4-4Ln"/>

@@ -17,7 +17,7 @@ class DetailedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
-        let imageFrame = CGRect(x: view.frame.midX-150, y: 500, width: 300, height: 250)
+        let imageFrame = CGRect(x: view.frame.midX-150, y: 100, width: 300, height: 250)
         let imageView = UIImageView(frame: imageFrame)
 
         if let imagePath = restaurants!.imageURL {
@@ -37,16 +37,18 @@ class DetailedViewController: UIViewController {
         view.backgroundColor = UIColor.white
         self.title = restaurants?.name
         
-        let theNameFrame = CGRect(x: view.frame.midX-150, y: 150, width: 300, height: 100)
+        let theNameFrame = CGRect(x: view.frame.midX-150, y: 150, width: 300, height: 50)
         let nameView = UITextView(frame: theNameFrame)
-
+        nameView.backgroundColor = UIColor.black
         if let placeName = restaurants!.name{
             nameView.text = "Name: " + (placeName)
         }
         if restaurants!.name == nil || restaurants!.name == "" {
             nameView.text = "Name: Missing Name"
         }
-        nameView.font = nameView.font?.withSize(25)
+        nameView.font = nameView.font?.withSize(20)
+        nameView.textColor = UIColor.white
+        nameView.textAlignment = .center
         view.addSubview(nameView)
         
         let thePriceFrame = CGRect(x: view.frame.midX-150, y: 250, width: 300, height: 50)
