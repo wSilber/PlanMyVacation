@@ -17,7 +17,7 @@ class DetailedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
-        let imageFrame = CGRect(x: view.frame.midX-150, y: 100, width: 300, height: 250)
+        let imageFrame = CGRect(x: view.frame.midX-150, y: 125, width: 300, height: 275)
         let imageView = UIImageView(frame: imageFrame)
 
         if let imagePath = restaurants!.imageURL {
@@ -37,112 +37,146 @@ class DetailedViewController: UIViewController {
         view.backgroundColor = UIColor.white
         self.title = restaurants?.name
         
-        let theNameFrame = CGRect(x: view.frame.midX-150, y: 150, width: 300, height: 50)
-        let nameView = UITextView(frame: theNameFrame)
-        nameView.backgroundColor = UIColor.black
+        let theNameFrame = CGRect(x: view.frame.midX-150, y: 325, width: 300, height: 75)
+        let nameView = UILabel(frame: theNameFrame)
+        nameView.backgroundColor = UIColor(red: 76, green: 76, blue: 76, alpha: 0.80)
+
         if let placeName = restaurants!.name{
-            nameView.text = "Name: " + (placeName)
+            nameView.text = placeName
         }
         if restaurants!.name == nil || restaurants!.name == "" {
             nameView.text = "Name: Missing Name"
         }
-        nameView.font = nameView.font?.withSize(20)
-        nameView.textColor = UIColor.white
+        nameView.font = nameView.font?.withSize(18)
+        nameView.textColor = UIColor.gray
         nameView.textAlignment = .center
+        nameView.baselineAdjustment = .alignCenters
+        nameView.numberOfLines = 2
         view.addSubview(nameView)
         
-        let thePriceFrame = CGRect(x: view.frame.midX-150, y: 250, width: 300, height: 50)
-        let priceView = UITextView(frame: thePriceFrame)
-        
-        if let priceofBusiness = restaurants!.price{
-        if(priceofBusiness == "$"){
-            priceView.text = "Price Level: " + "Inexpensive, $10 and under"
-        }
-        
-        if(priceofBusiness == "$$"){
-            priceView.text = "Price Level: " + "Moderately expensive, between $10-$25"
-        }
-        
-        if(priceofBusiness == "$$$"){
-            priceView.text = "Price Level: " + "Expensive, between $25-$45"
-        }
-        
-        if(priceofBusiness == "$$$$"){
-            priceView.text = "Price Level: " + "Very Expensive, greater than $50"
-        }
-        }
-        if restaurants!.price == nil || restaurants!.price == "" {
-            priceView.text = "Price Level: Unavailable"
-        }
-        
-        priceView.font = priceView.font?.withSize(18)
-        view.addSubview(priceView)
-        
-        let theRatingFrame = CGRect(x: view.frame.midX-150, y: 300, width: 150, height: 50)
-        let ratingView = UITextView(frame: theRatingFrame)
-        if let rating = restaurants!.rating {
-            ratingView.text = "Rating: " + String(rating) + "/5.0"
-        }
-        if restaurants!.rating == nil || restaurants!.rating!.isNaN == true {
-            ratingView.text = "Rating: Unavailable"
-        }
-        
-        ratingView.font = ratingView.font?.withSize(18)
-        view.addSubview(ratingView)
-        
-        let theAddressFrame = CGRect(x: view.frame.midX-150, y: 350, width: 300, height: 80)
+        let theAddressFrame = CGRect(x: view.frame.midX-150, y: 400, width: 300, height: 80)
         let addressView = UITextView(frame: theAddressFrame)
         if let address = restaurants!.address {
-            addressView.text = "Address: " + String(address)
+            addressView.text = "Located at " + String(address)
         }
         if restaurants!.address == nil || restaurants!.address == "" {
             addressView.text = "Address: Unavailable"
         }
-        addressView.font = ratingView.font?.withSize(18)
+        addressView.textAlignment = .center
+        addressView.font = addressView.font?.withSize(15)
+        addressView.backgroundColor = UIColor(red: 76, green: 76, blue: 76, alpha: 0.80)
         view.addSubview(addressView)
         
-        let thePhoneFrame = CGRect(x: view.frame.midX-150, y: 400, width: 300, height: 80)
-        let thePhoneView = UITextView(frame: thePhoneFrame)
-        if let phoneNumber = restaurants!.phone {
-            thePhoneView.text = "Phone Number: " + String(phoneNumber)
-        }
-        if restaurants!.phone == nil || restaurants!.phone == "" {
-            thePhoneView.text = "Phone Number: Unavailable"
-        }
-        thePhoneView.font = thePhoneView.font?.withSize(18)
-        view.addSubview(thePhoneView)
-        
-        let isClosedFrame = CGRect(x: view.frame.midX-150, y: 450, width: 300, height: 50)
-        let isClosedView = UITextView(frame: isClosedFrame)
-        if let boolisclosed = restaurants!.is_closed {
-        if(boolisclosed == false){
-            isClosedView.text = "Permanently Closed? " +
-            "Open!"
-        }
-        else{
-            isClosedView.text = "Permanently Closed? " +
-            "Closed"
-        }
-        }
-        if restaurants!.is_closed == nil || (restaurants!.is_closed != true && restaurants!.is_closed != false) {
-            isClosedView.text = "Permanently Closed? " +
-                "Unavailable"
-        }
-        isClosedView.font = isClosedView.font?.withSize(18)
         
         
-        let yelpURLFrame = CGRect(x: view.frame.midX+30, y: 300, width: 100, height: 80)
+        
+        let yelpURLFrame = CGRect(x: view.frame.midX-90, y: 440, width: 100, height: 80)
         let theURLView = UIButton(frame: yelpURLFrame)
         theURLView.setImage(UIImage(named:"yelpURL"), for: .normal)
         theURLView.addTarget(self, action: #selector(openYelpURL(_:)), for: .touchUpInside)
         view.addSubview(theURLView)
 
-        let reviewButtonFrame = CGRect(x: view.frame.midX+100, y: 300, width: 100, height: 80)
+        let reviewButtonFrame = CGRect(x: view.frame.midX+20, y: 440, width: 100, height: 80)
         let theReviewButtonView = UIButton(frame: reviewButtonFrame)
         theReviewButtonView.setImage(UIImage(named:"reviewButton"), for: .normal)
         theReviewButtonView.addTarget(self, action: #selector(getReviews(_:)), for: .touchUpInside)
-
         view.addSubview(theReviewButtonView)
+        
+        
+        let addInfoFrame = CGRect(x: view.frame.midX-150, y: 525, width: 300, height: 80)
+        let addInfoView = UITextView(frame: addInfoFrame)
+        addInfoView.text = "ADDITIONAL INFOMRATION"
+        addInfoView.textAlignment = .center
+        addInfoView.textColor = UIColor.darkGray
+        addInfoView.font = addInfoView.font?.withSize(22)
+        
+        view.addSubview(addInfoView)
+        
+        
+        
+        
+        let isClosedFrame = CGRect(x: view.frame.midX-150, y:550, width: 300, height: 50)
+        let isClosedView = UILabel(frame: isClosedFrame)
+        if let boolisclosed = restaurants!.is_closed {
+        if(boolisclosed == false){
+            isClosedView.text = " Open? This place is open."
+        }
+        else{
+            isClosedView.text = " Open? This place is permanently closed."
+        }
+        }
+        if restaurants!.is_closed == nil || (restaurants!.is_closed != true && restaurants!.is_closed != false) {
+            isClosedView.text = " Open? Info is unavailable"
+        }
+        isClosedView.font = isClosedView.font?.withSize(15.5)
+//        isClosedView.textColor = UIColor.black
+        isClosedView.textAlignment = .left
+        isClosedView.baselineAdjustment = .alignCenters
+        isClosedView.numberOfLines = 1
+        view.addSubview(isClosedView)
+
+        let theRatingFrame = CGRect(x: view.frame.midX-150, y: 600, width: 150, height: 50)
+        let ratingView = UITextView(frame: theRatingFrame)
+        if let rating = restaurants!.rating {
+            ratingView.text = "Rating? " + String(rating) + "/5.0"
+        }
+        if restaurants!.rating == nil || restaurants!.rating!.isNaN == true {
+            ratingView.text = "Rating? Unavailable"
+        }
+        ratingView.font = ratingView.font?.withSize(15.5)
+        view.addSubview(ratingView)
+        
+        let thePriceFrame = CGRect(x: view.frame.midX-150, y: 635, width: 300, height: 50)
+        let priceView = UITextView(frame: thePriceFrame)
+        
+        if let priceofBusiness = restaurants!.price{
+        if(priceofBusiness == "$"){
+            priceView.text = "Price Level? " + "Inexpensive, $10 and under"
+        }
+        
+        if(priceofBusiness == "$$"){
+            priceView.text = "Price Level? " + "Moderately expensive, between $10-$25"
+        }
+        
+        if(priceofBusiness == "$$$"){
+            priceView.text = "Price Level? " + "Expensive, between $25-$45"
+        }
+        
+        if(priceofBusiness == "$$$$"){
+            priceView.text = "Price Level? " + "Very Expensive, greater than $50"
+        }
+        }
+        if restaurants!.price == nil || restaurants!.price == "" {
+            priceView.text = "Price Level? Unavailable"
+        }
+        priceView.font = priceView.font?.withSize(15.5)
+        view.addSubview(priceView)
+        
+      
+       
+       
+        
+        
+        
+        let thePhoneFrame = CGRect(x: view.frame.midX-150, y: 680, width: 300, height: 100)
+        let thePhoneView = UILabel(frame: thePhoneFrame)
+        if let phoneNumber = restaurants!.phone {
+            thePhoneView.text = "To visit the place please call " + String(phoneNumber)
+        }
+        if restaurants!.phone == nil || restaurants!.phone == "" {
+            thePhoneView.text = "The phone number is unavailable. Press the Yelp button for details."
+        }
+        thePhoneView.font = thePhoneView.font?.withSize(17)
+        thePhoneView.textColor = UIColor.lightGray
+        thePhoneView.textAlignment = .center
+        thePhoneView.baselineAdjustment = .alignCenters
+        thePhoneView.numberOfLines = 2
+        view.addSubview(thePhoneView)
+        
+      
+        
+        
+        
         
         
         let helpButtonFrame = CGRect(x: view.frame.midX+100, y: 100, width: 70, height: 70)
@@ -181,7 +215,6 @@ class DetailedViewController: UIViewController {
 //        theHoursView.text = "Hours: " + String((restaurants?.hours?[0])!) + String((restaurants?.hours?[1])!)
 //        theHoursView.font = theHoursView.font?.withSize(18)
 //        view.addSubview(theHoursView)
-        view.addSubview(isClosedView)
 
         // Do any additional setup after loading the view.
     }
