@@ -19,8 +19,8 @@ class ViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDe
     
     @IBOutlet weak var searchBar: UISearchBar!
     
-    var CPlatitude: Double = 38.627003
-    var CPlongitude: Double = -90.19940200
+    var CPlatitude: Double = 47.606209
+    var CPlongitude: Double = -122.332069
     var location = CLLocation(latitude: 38.627003, longitude: -90.19940200)
     
     var restaurants: [Restaurants] = []
@@ -37,24 +37,22 @@ class ViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDe
 //    var storedFavorites: [FavoritedCity] = [] as! [FavoritedCity]
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-          setUsersClosestCity()
-          searchBar.placeholder = "Search a Location"
+        // Ask for Authorisation from the User.
+      self.locationManager.requestAlwaysAuthorization()
+        // For use in foreground
+      self.locationManager.requestWhenInUseAuthorization()
+
+      if CLLocationManager.locationServicesEnabled() {
+          locationManager.delegate = self
+          locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
           locationManager.startUpdatingLocation()
-          
-          searchBar.delegate = self
+      }
+        searchBar.delegate = self
+        searchBar.placeholder = "Search a Location"
+        
+        locationManager.startUpdatingLocation()
+        //setUsersClosestCity()
 
-          // Ask for Authorisation from the User.
-          self.locationManager.requestAlwaysAuthorization()
-          // For use in foreground
-          self.locationManager.requestWhenInUseAuthorization()
-
-          if CLLocationManager.locationServicesEnabled() {
-              locationManager.delegate = self
-              locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-              locationManager.startUpdatingLocation()
-          }
-    
           restaurantsTableView.delegate = self
           restaurantsTableView.dataSource = self
           restaurantsTableView.register(UINib(nibName: "CustomCell", bundle: nil), forCellReuseIdentifier: "customCell")
@@ -80,6 +78,7 @@ class ViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDe
           } catch {
               print("Unable to Encode Note (\(error))")
           }
+
     }
     
     /*
@@ -134,21 +133,22 @@ class ViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDe
     }
  */
     let alert = UIAlertController(title: "Get Started!", message: "Explore Restaurants, Hotels, and Landmarks near you by clicking the slider or simply search a location!", preferredStyle: .alert)
-
-    
     
     @objc func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
         CPlatitude = locValue.latitude
         CPlongitude = locValue.longitude
         location = CLLocation(latitude: CPlatitude, longitude: CPlongitude)
+        location = locations.first ?? CLLocation(latitude: 38.627003, longitude: -90.19940200)
+        print("location \(String(describing: locations.first))")
+        setUsersClosestCity()
     }
 
     func setUsersClosestCity(){
     //https://stackoverflow.com/questions/47987473/addressdictionary-is-deprecated-first-deprecated-in-ios-11-0-use-properties
+    print("setusersclosestcity \(location)")
     let geoCoder = CLGeocoder()
         geoCoder.reverseGeocodeLocation(location) { [self] (placemarksArray, error) in
-//                print(placemarksArray!)
                 if (error) == nil {
                     if placemarksArray!.count > 0 {
                         let placemark = placemarksArray?[0]
@@ -156,7 +156,8 @@ class ViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDe
                         if let userlocation = placemark?.locality {
                             let userlocation = String(userlocation.filter { !" \n\t\r".contains($0) })
                             self.locationInput = userlocation
-//                            print("setUsersClosesCity \(locationInput)")
+                            print("userlocation \(userlocation)")
+                            print("locationinput \(locationInput)")
                         }
                     }
                 }
