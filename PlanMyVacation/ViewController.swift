@@ -12,7 +12,6 @@ import MapKit
 import CoreLocation
 import Foundation
 
-
 class ViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDelegate {
     
     @IBOutlet weak var restaurantsTableView: UITableView!
@@ -47,11 +46,12 @@ class ViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDe
           locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
           locationManager.startUpdatingLocation()
       }
+        
         searchBar.delegate = self
         searchBar.placeholder = "Search a Location"
         
         locationManager.startUpdatingLocation()
-        //setUsersClosestCity()
+        setUsersClosestCity()
 
           restaurantsTableView.delegate = self
           restaurantsTableView.dataSource = self
@@ -78,7 +78,6 @@ class ViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDe
           } catch {
               print("Unable to Encode Note (\(error))")
           }
-
     }
     
     /*
@@ -138,7 +137,7 @@ class ViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDe
         guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
         CPlatitude = locValue.latitude
         CPlongitude = locValue.longitude
-        location = CLLocation(latitude: CPlatitude, longitude: CPlongitude)
+        //location = CLLocation(latitude: CPlatitude, longitude: CPlongitude)
         location = locations.first ?? CLLocation(latitude: 38.627003, longitude: -90.19940200)
         print("location \(String(describing: locations.first))")
         setUsersClosestCity()
@@ -166,8 +165,6 @@ class ViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDe
     }
     
     @IBAction func selectCategory(_ sender: UISegmentedControl) {
-//        print("selectCategory \(locationInput)")
-
         if categoryRHL.selectedSegmentIndex == 0 {
             categories = "restaurants"
 //            retrieveVenues(latitude: CPLatitude, longitude: CPLongitude, category: categories,
@@ -194,16 +191,6 @@ class ViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDe
         }
         if categoryRHL.selectedSegmentIndex == 1 {
             categories = "hotels"
-//            retrieveVenues(latitude: CPLatitude, longitude: CPLongitude, category: categories,
-//                           limit: 50, sortBy: "distance", locale: "en_US") { (response, error) in
-//
-//                            if let response = response {
-//                                self.restaurants = response
-//                                DispatchQueue.main.async {
-//                                    self.restaurantsTableView.reloadData()
-//                                }
-//                            }
-//            }
             retrieveVenues(location: locationInput, category: categories,
                            limit: 25, sortBy: "distance", locale: "en_US") { (response, error) in
                             if let response = response {
@@ -227,17 +214,13 @@ class ViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDe
                         }
         }
     }
-//    print("selectCategory \(locationInput)")
 }
     var searchedCity : String = ""
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar){
-//        print("entered")
         if let text = searchBar.text{
             searchedCity = text
             let text1 = String(text.filter { !" \n\t\r".contains($0) })
-//            print(text1)
             locationInput = text1
-//            print(text)
         }
         retrieveVenues(location: locationInput, category: categories,
                        limit: 50, sortBy: "distance", locale: "en_US") { (response, error) in
@@ -248,11 +231,10 @@ class ViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDe
                             }
                         }
         }
-        print("restaurants \(self.restaurants)")
+        //print("restaurants \(self.restaurants)")
     }
     
 }
-
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     private func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: IndexPath) {
@@ -275,11 +257,11 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
         let detailedVC = DetailedViewController()
         detailedVC.restaurants = restaurants[indexPath.row]
-        navigationController?.pushViewController(detailedVC, animated: true)    }
+        navigationController?.pushViewController(detailedVC, animated: true)
+    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath) as! CustomCell
-        
         cell.accessoryType = .detailButton
         cell.nameLabel.text = restaurants[indexPath.row].name
         restaurants[indexPath.row].location = searchedCity
@@ -292,18 +274,10 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         if (restaurants[indexPath.row].rating == nil){
             cell.distanceLabel.text = ""
         }
-        
-        //cell.distanceLabel.text = "Distance: " + dist + " miles"
         cell.clipsToBounds = true
         cell.backgroundColor = .clear
-
         cell.locationName = searchBar.text
         cell.categoryType = categories
-        //cell.ratingLabel.text = String(restaurants[indexPath.row].rating ?? 0.0)
-        //cell.priceLabel.text = restaurants[indexPath.row].price ?? "No Info"
-        //cell.isClosed = restaurants[indexPath.row].is_closed ?? false
-        //cell.addressLabel.text = restaurants[indexPath.row].address
-        
         return cell
     }
     
