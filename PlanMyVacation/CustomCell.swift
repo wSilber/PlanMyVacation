@@ -13,6 +13,12 @@ class CustomCell: UITableViewCell {
     var image: UIImage?
     var locationName: String?
     var categoryType: String?
+    var numRestaurants: Int = 0
+    var numHotels: Int = 0
+    var numLandmarks: Int = 0
+    var numLocations: Int = 0
+    
+    
     @IBOutlet weak var cell: UILabel!
     
     @IBOutlet weak var parentView: UIView!
@@ -29,6 +35,9 @@ class CustomCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        favButton.layer.zPosition = 1
+        self.bringSubviewToFront(favButton);
+        favButton.isUserInteractionEnabled = true
         selectionStyle = .none
         // Initialization code
         nameLabel.layer.shadowColor = UIColor.darkGray.cgColor
@@ -74,11 +83,13 @@ class CustomCell: UITableViewCell {
                         if categoryType == "restaurants"
                         {
                             storedFavorites[cityIndex].restaurants.append(nameLabel.text ?? "")
+                            numRestaurants = numRestaurants + 1
                             
                         }
                         if categoryType == "hotels"
                         {
                             storedFavorites[cityIndex].hotels.append(nameLabel.text ?? "")
+                        
                         }
                         if categoryType == "landmarks"
                         {
