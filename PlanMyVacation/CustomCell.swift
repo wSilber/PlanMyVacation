@@ -17,6 +17,10 @@ class CustomCell: UITableViewCell {
     var numHotels: Int = 0
     var numLandmarks: Int = 0
     var numLocations: Int = 0
+    var restaurantExists = false
+    var hotelExists = false
+    var landmarkExists = false
+    var allPlacesExist = false
     
     
     @IBOutlet weak var cell: UILabel!
@@ -82,20 +86,67 @@ class CustomCell: UITableViewCell {
                     {
                         if categoryType == "restaurants"
                         {
-                            storedFavorites[cityIndex].restaurants.append(nameLabel.text ?? "")
-                            numRestaurants = numRestaurants + 1
+                            
+                            for restaurant in storedFavorites[cityIndex].restaurants
+                            {
+                                if restaurant == nameLabel.text
+                                {
+                                    print("checking our restaurants" + restaurant)
+                                    print(nameLabel.text)
+                                    restaurantExists = true
+                                }
+                            }
+                            if !restaurantExists
+                            {
+                               print("restaurant doesn't exist")
+                                storedFavorites[cityIndex].restaurants.append(nameLabel.text ?? "")
+                                numRestaurants = numRestaurants + 1
+                            }
                             
                         }
                         if categoryType == "hotels"
                         {
-                            storedFavorites[cityIndex].hotels.append(nameLabel.text ?? "")
+                            for hotel in storedFavorites[cityIndex].hotels
+                            {
+                                if hotel == nameLabel.text
+                                {
+                                    hotelExists = true
+                                }
+                            }
+                            if !hotelExists
+                            {
+                                storedFavorites[cityIndex].hotels.append(nameLabel.text ?? "")
+                            }
+                            
                         
                         }
                         if categoryType == "landmarks"
                         {
-                            storedFavorites[cityIndex].landmarks.append(nameLabel.text ?? "")
+                            for landmark in storedFavorites[cityIndex].landmarks
+                            {
+                                if landmark == nameLabel.text
+                                {
+                                    landmarkExists = true
+                                }
+                            }
+                            if !landmarkExists
+                            {
+                                storedFavorites[cityIndex].landmarks.append(nameLabel.text ?? "")
+                            }
+                            
                         }
-                        storedFavorites[cityIndex].allPlaces.append(nameLabel.text ?? "")
+                        for place in storedFavorites[cityIndex].allPlaces
+                        {
+                            if place == nameLabel.text
+                            {
+                                allPlacesExist = true
+                            }
+                        }
+                        if !allPlacesExist
+                        {
+                            storedFavorites[cityIndex].allPlaces.append(nameLabel.text ?? "")
+                        }
+                       
                         do {
                             // Create JSON Encoder
                             let encoder = JSONEncoder()
@@ -119,17 +170,72 @@ class CustomCell: UITableViewCell {
                         currCity.cityName = locationName!
                         if categoryType == "restaurants"
                         {
-                            currCity.restaurants.append(nameLabel.text ?? "")
+                            for restaurant in storedFavorites[cityIndex].restaurants
+                            {
+                                if restaurant == nameLabel.text
+                                {
+                                    print("checking our restaurants" + restaurant)
+                                    print(nameLabel.text)
+                                    restaurantExists = true
+                                }
+                            }
+                            if !restaurantExists
+                            {
+                               print("restaurant doesn't exist")
+                                currCity.restaurants.append(nameLabel.text ?? "")
+                                numRestaurants = numRestaurants + 1
+                            }
+                            
                         }
                         if categoryType == "hotels"
                         {
-                            currCity.hotels.append(nameLabel.text ?? "")
+                            for hotel in storedFavorites[cityIndex].hotels
+                            {
+                                if hotel == nameLabel.text
+                                {
+                                                                        
+                                    hotelExists = true
+                                }
+                            }
+                            if !hotelExists
+                            {
+                               
+                                currCity.hotels.append(nameLabel.text ?? "")
+                                
+                            }
                         }
                         if categoryType == "landmarks"
                         {
-                            currCity.landmarks.append(nameLabel.text ?? "")
+                            for landmark in storedFavorites[cityIndex].landmarks
+                            {
+                                if landmark == nameLabel.text
+                                {
+                                                                        
+                                    landmarkExists = true
+                                }
+                            }
+                            if !landmarkExists
+                            {
+                               
+                                currCity.landmarks.append(nameLabel.text ?? "")
+                                
+                            }
                         }
-                        currCity.allPlaces.append(nameLabel.text ?? "")
+                        for place in storedFavorites[cityIndex].allPlaces
+                        {
+                            if place == nameLabel.text
+                            {
+                                                                    
+                                allPlacesExist = true
+                            }
+                        }
+                        if !allPlacesExist
+                        {
+                           
+                            currCity.allPlaces.append(nameLabel.text ?? "")
+                            
+                        }
+                        
                         do {
                             // Create JSON Encoder
                             let encoder = JSONEncoder()
