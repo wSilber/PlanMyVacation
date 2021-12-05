@@ -5,7 +5,7 @@
 //  Created by William Silberstein on 11/10/21.
 //
 
-// AS OF RIGHT NOW WE STILL HAVE MORE SOURCES TO CITE AND THE CODE NEEDS TO BE CLEANED UP. THIS IS SOLELY FOR THE SUBMISSION FOR THE UPDATE VIDEO. ALL SOURCES WILL BE CITED FOR FINAL SUBMISSION!!!!
+
 
 import UIKit
 import MapKit
@@ -279,7 +279,14 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         }
         cell.clipsToBounds = true
         cell.backgroundColor = .clear
-        cell.locationName = searchBar.text
+        if(searchBar.text == "")
+        {
+            cell.locationName = locationInput
+        }
+        else
+        {
+            cell.locationName = searchBar.text
+        }
         cell.categoryType = categories
         return cell
     }
