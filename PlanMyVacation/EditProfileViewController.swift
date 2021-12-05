@@ -51,23 +51,32 @@ class EditProfileViewController: UIViewController,  UINavigationControllerDelega
         profileController.getUserInfo()
     
         userNameInput.text = profileController.getUsername()
+        
+        // Add tep gesture recognizer to profile picture view to allow user to set image
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapImageView(_:)))
         profilePicture.addGestureRecognizer(tapGestureRecognizer)
         reload()
     }
     
+    /*
+     *  didTapImageView: Action that displays the image picker when the user taps on the profile picture
+     */
     @objc func didTapImageView(_ sender: UITapGestureRecognizer) {
-        print("did tap image view", sender)
-
         present(imagePicker, animated: true, completion: nil)
     }
     
+    /*
+     *  imagePickerController: Sets the user profile image when image is selected and dismisses the image picker
+     */
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         guard let image = info[.originalImage] as? UIImage else { return }
         profilePicture.image = image
         dismiss(animated: true, completion: nil)
     }
     
+    /*
+     *  imagePickerControllerDidCancel: Dismisses the image picker when user closes the picker
+     */
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion:nil)
     }
@@ -79,6 +88,9 @@ class EditProfileViewController: UIViewController,  UINavigationControllerDelega
         self.profileViewController = profileViewController
     }
     
+    /*
+     *  reload: Reloads the view UI.
+     */
     func reload() {
         if let safeProfilePicture = profileController.getProfilePicture() {
             profilePicture.image = safeProfilePicture
@@ -110,7 +122,8 @@ class EditProfileViewController: UIViewController,  UINavigationControllerDelega
      *        user's profile page with the new data on success
      */
     func save() {
-        print("Saving user data")
+        
+        // Make sure profileViewController exists
         guard let safeProfileViewController = profileViewController else { return }
         if let safeUsername = userNameInput.text {
             profileController.username = safeUsername
@@ -119,6 +132,8 @@ class EditProfileViewController: UIViewController,  UINavigationControllerDelega
         if let safeProfilePicture = profilePicture.image {
             profileController.profilePicture = safeProfilePicture
         }
+        
+        // If successful save reload view UI
         if(profileController.saveUserInfo()) {
             safeProfileViewController.reload()
         }
