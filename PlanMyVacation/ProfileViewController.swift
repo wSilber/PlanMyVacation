@@ -35,6 +35,13 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        profileController.getUserInfo()
+        reload()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        reload()
     }
     
     /*
@@ -46,6 +53,27 @@ class ProfileViewController: UIViewController {
         if let username = profileController.getUsername() {
             usernameLabel.text = username
         }
+        
+        if let cities = profileController.cityCount {
+            citiesCount.text = String(cities)
+        }
+        
+        if let resteraunts = profileController.resterauntCount {
+            ResterauntsCount.text = String(resteraunts)
+        }
+        
+        if let hotels = profileController.hotelCount {
+            hotelsCount.text = String(hotels)
+        }
+        
+        if let landmarks = profileController.landmarkCount {
+            landMarksCount.text = String(landmarks)
+        }
+        
+        if let profilePicture = profileController.profilePicture {
+            profilePictureView.image = profilePicture
+        }
+
     }
     
 }

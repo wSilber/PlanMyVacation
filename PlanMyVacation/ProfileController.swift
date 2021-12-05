@@ -13,6 +13,10 @@ class ProfileController {
     var username: String?
     var profilePicture: UIImage?
     var favoriteCities: [FavoritedCity]?
+    var cityCount: Int?
+    var hotelCount: Int?
+    var resterauntCount: Int?
+    var landmarkCount: Int?
     
     /*
      * getUserInfo: Gets all of the user's saved information from the user defaults
@@ -24,25 +28,53 @@ class ProfileController {
             return
             
         }
-        guard let favPlacesData = UserDefaults.standard.data(forKey: "favPlaces") else {
-            print("Could not get favorite places")
-            return
-            
-        }
         
         do {
-            let decoder = JSONDecoder()
-
-            let userProfile = try decoder.decode(Profile.self, from: userData)
-            let storedFavorites = try decoder.decode([FavoritedCity].self, from: favPlacesData)
             
+            let decoder = JSONDecoder()
+            let userProfile = try decoder.decode(Profile.self, from: userData)
             username = userProfile.username
+            
+            guard let favPlacesData = UserDefaults.standard.data(forKey: "favPlaces") else {
+                print("Could not get favorite places")
+                return
+                
+            }
+            
+            let storedFavorites = try decoder.decode([FavoritedCity].self, from: favPlacesData)
             
             if let safeProfilePicture = userProfile.profilePicture {
                 profilePicture = UIImage(data: safeProfilePicture)
             }
             
             favoriteCities = storedFavorites
+            //favoriteCities[1].restaurants
+            guard let safeCities = favoriteCities else { return }
+            
+            var cities = 0
+            var hotels = 0
+            var resteraunts = 0
+            var landmarks = 0
+            
+            for city in safeCities {
+                cities+=1;
+                for resteraunt in city.restaurants {
+                    resteraunts+=1
+                }
+                
+                for hotel in city.hotels {
+                    hotels+=1
+                }
+                
+                for landmark in city.landmarks {
+                    landmarks+=1
+                }
+            }
+            
+            cityCount = cities - 1
+            hotelCount = hotels
+            resterauntCount = resteraunts
+            landmarkCount = landmarks
             
         } catch {
             print(error)
