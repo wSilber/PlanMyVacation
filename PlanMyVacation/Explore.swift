@@ -9,22 +9,28 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class Explore: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource,MKMapViewDelegate, CLLocationManagerDelegate {
+class Explore: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource,MKMapViewDelegate, CLLocationManagerDelegate, UIContextMenuInteractionDelegate {
+    func contextMenuInteraction(_ interaction: UIContextMenuInteraction, configurationForMenuAtLocation location: CGPoint) -> UIContextMenuConfiguration? {
+        return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { _ -> UIMenu? in
+        return self.createContextMenu()
+            }
+    }
+    @IBOutlet weak var exploreTitle: UILabel!
+    
     @IBOutlet weak var cityName: UILabel!
-    @IBOutlet weak var mMapView: MKMapView!
         
     var timer = Timer()
     var counter = 0
-    var imgArr = [ UIImage(named: "image1"),
-                   UIImage(named: "image2"),
-                   UIImage(named: "image3"),
-                   UIImage(named: "image4"),
-                   UIImage(named: "image5"),
-                   UIImage(named: "image6"),
-                   UIImage(named: "image7"),
-                   UIImage(named: "image8"),
-                   UIImage(named: "image9"),
-                   UIImage(named: "image10")
+    var imgArr = [ UIImage(named: "us1"),
+                   UIImage(named: "us2"),
+                   UIImage(named: "us3"),
+                   UIImage(named: "us4"),
+                   UIImage(named: "us5"),
+                   UIImage(named: "us6"),
+                   UIImage(named: "us7"),
+                   UIImage(named: "us8"),
+                   UIImage(named: "us9"),
+                   UIImage(named: "us10")
     ]
     var text = ["San Francisco", "Las Vegas", "St. Louis", "Manhattan", "Denver", "Flagstaff", "Salt Lake City", "Detroit", "Seattle", "Miami"]
     
@@ -45,15 +51,20 @@ class Explore: UIViewController, UICollectionViewDelegate, UICollectionViewDataS
     @IBOutlet weak var sliderCollectionView: UICollectionView!
 
     ////citation: https://www.youtube.com/watch?v=cbeE3OQlU3c
-   
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        exploreTitle.text = "Explore New Cities!"
         cityName.text = "Explore San Francisco"
         sliderCollectionView.delegate = self
         sliderCollectionView.dataSource = self
         pageController.numberOfPages = imgArr.count
         pageController.currentPage = 0
+        
+        let interaction = UIContextMenuInteraction(delegate: self)
+        view.addInteraction(interaction)
+        view.isUserInteractionEnabled = true
+        
         DispatchQueue.main.async {
             self.timer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(self.changeImage), userInfo: nil, repeats: true)
         }
@@ -64,6 +75,74 @@ class Explore: UIViewController, UICollectionViewDelegate, UICollectionViewDataS
         // Dispose of any resources that can be recreated.
     }
     
+    func createContextMenu() -> UIMenu {
+    let shareAction = UIAction(title: "Share", image: UIImage(systemName: "square.and.arrow.up")) { _ in
+        print("Share")
+        self.shareButtonClicked()
+    }
+    let exploreUS = UIAction(title: "Explore US", image: UIImage(systemName: "doc.on.doc")) { _ in
+        self.imgArr = [ UIImage(named: "us1"),
+                       UIImage(named: "us2"),
+                       UIImage(named: "us3"),
+                       UIImage(named: "us4"),
+                       UIImage(named: "us5"),
+                       UIImage(named: "us6"),
+                       UIImage(named: "us7"),
+                       UIImage(named: "us8"),
+                       UIImage(named: "us9"),
+                       UIImage(named: "us10")
+        ]
+        self.text = ["San Francisco", "Las Vegas", "St. Louis", "Manhattan", "Denver", "Flagstaff", "Salt Lake City", "Detroit", "Seattle", "Miami"]
+        self.exploreTitle.text = "Explore US!"
+
+    }
+    let exploreCanada = UIAction(title: "Explore Canada", image: UIImage(systemName: "doc.on.doc")) { _ in
+        self.imgArr = [ UIImage(named: "canada1"),
+                           UIImage(named: "canada2"),
+                           UIImage(named: "canada3"),
+                           UIImage(named: "canada4"),
+                           UIImage(named: "canada5"),
+                           UIImage(named: "canada1"),
+                           UIImage(named: "canada2"),
+                           UIImage(named: "canada3"),
+                           UIImage(named: "canada4"),
+                           UIImage(named: "canada5")
+            ]
+        self.text = ["Vancouver", "Montreal", "Toronto", "Calgary", "Ottawa","Vancouver", "Montreal", "Toronto", "Calgary", "Ottawa"]
+        self.exploreTitle.text = "Explore Canada!"
+        }
+    let saveToPhotos = UIAction(title: "Add To Photos", image: UIImage(systemName: "photo")) { _ in
+        for image in self.imgArr{
+            if let savedimage = image {
+            UIImageWriteToSavedPhotosAlbum(savedimage, nil, nil, nil)
+            }
+        }
+        let alertController = UIAlertController(title: "Saved!", message: "All the images have been saved to your camera roll", preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title:"Ok", style: .default))
+        self.present(alertController, animated: true)
+    }
+    
+        return UIMenu(title: "", children: [shareAction, exploreUS, exploreCanada, saveToPhotos])
+    }
+    
+    func shareButtonClicked(){
+            //Set the default sharing message.
+            let message = "Check out this info on top US cities!"
+            //Set the link to share.
+            if let link = NSURL(string: "https://travel.usnews.com/rankings/best-usa-vacations/")
+            {
+                let objectsToShare = [message,link] as [Any]
+                let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+                activityVC.excludedActivityTypes = [UIActivity.ActivityType.airDrop, UIActivity.ActivityType.addToReadingList]
+                self.present(activityVC, animated: true, completion: nil)
+            }
+    }
+    
+    func notifyUser(heading: String, note: String){
+        let alertController = UIAlertController(title: heading, message: note, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title:"Ok", style: .default))
+        present(alertController, animated: true)
+       }
     
     //citation: https://www.youtube.com/watch?v=cbeE3OQlU3c
     @objc func changeImage() {
@@ -71,14 +150,14 @@ class Explore: UIViewController, UICollectionViewDelegate, UICollectionViewDataS
          let index = IndexPath.init(item: counter, section: 0)
          self.sliderCollectionView.scrollToItem(at: index, at: .centeredHorizontally, animated: true)
          pageController.currentPage = counter
-        cityName.text = "Explore " + text[counter]
+        cityName.text = "Visit " + text[counter]
         counter += 1
      } else {
          counter = 0
          let index = IndexPath.init(item: counter, section: 0)
          self.sliderCollectionView.scrollToItem(at: index, at: .centeredHorizontally, animated: false)
          pageController.currentPage = counter
-        cityName.text = "Explore " + text[counter]
+        cityName.text = "Visit " + text[counter]
          counter = 1
      }
          

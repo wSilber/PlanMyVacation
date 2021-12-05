@@ -541,6 +541,7 @@
                     <tabBarItem key="tabBarItem" title="Explore" image="network" catalog="system" id="xg3-7U-Zal"/>
                     <connections>
                         <outlet property="cityName" destination="gyB-El-xfm" id="t7w-92-tgn"/>
+                        <outlet property="exploreTitle" destination="yfh-dD-TlY" id="4dw-WI-NYd"/>
                         <outlet property="pageController" destination="iRU-FM-yxF" id="Dr4-qc-IlR"/>
                         <outlet property="sliderCollectionView" destination="rVZ-mI-hbM" id="5Wk-Oo-QQC"/>
                     </connections>
