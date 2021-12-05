@@ -80,6 +80,7 @@ class ViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDe
           }
     }
     
+    
     /*
 
     override func viewDidAppear(_ animated: Bool) {
@@ -232,6 +233,8 @@ class ViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDe
                         }
         }
         //print("restaurants \(self.restaurants)")
+        //searchActive = false;
+        self.searchBar.endEditing(true)
     }
     
 }
