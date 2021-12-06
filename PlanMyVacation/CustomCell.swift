@@ -22,9 +22,6 @@ class CustomCell: UITableViewCell {
     var landmarkExists = false
     var allPlacesExist = false
     
-   
-    @IBOutlet weak var popUp: UITextField!
-    
     @IBOutlet weak var addedYes: UILabel!
     
     @IBOutlet weak var cell: UILabel!
