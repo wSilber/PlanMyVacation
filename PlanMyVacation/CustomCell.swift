@@ -22,6 +22,9 @@ class CustomCell: UITableViewCell {
     var landmarkExists = false
     var allPlacesExist = false
     
+   
+    @IBOutlet weak var popUp: UITextField!
+    
     @IBOutlet weak var addedYes: UILabel!
     
     @IBOutlet weak var cell: UILabel!
@@ -41,6 +44,7 @@ class CustomCell: UITableViewCell {
         super.awakeFromNib()
         favButton.layer.zPosition = 1
         self.bringSubviewToFront(favButton);
+        //popUp.text = "Hey you saved btw"
         favButton.isUserInteractionEnabled = true
         selectionStyle = .none
         // Initialization code
@@ -50,11 +54,15 @@ class CustomCell: UITableViewCell {
         nameLabel.layer.shadowRadius = 2
         nameLabel.layer.cornerRadius = 13
         nameLabel.layer.masksToBounds = true
+
     }
 
     
     @IBAction func insertFav(_ sender: UIButton!) {
+        
         favButton.setImage(UIImage(named:"starAfter"), for: UIControl.State.highlighted)
+        
+        
         //source for below code: https://cocoacasts.com/ud-5-how-to-store-a-custom-object-in-user-defaults-in-swift
         
         //let cityArray = try? JSONDecoder().decode([FavoritedCity].self, from: storedData!)
@@ -145,6 +153,27 @@ class CustomCell: UITableViewCell {
                         if !allPlacesExist
                         {
                             storedFavorites[cityIndex].allPlaces.append(nameLabel.text ?? "")
+                            let pop: UITextField = UITextField(frame: CGRect(x: 5, y: 0, width: 300.00, height: 30.00));
+                            pop.text = "Saved to Favorites"
+                            pop.backgroundColor = UIColor.systemGray
+                            pop.textColor = UIColor.white
+                            self.addSubview(pop)
+                            self.bringSubviewToFront(pop);
+                            
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [unowned self] in
+                                pop.isHidden = true
+                             }
+                        } else {
+                            let pop: UITextField = UITextField(frame: CGRect(x: 5, y: 0, width: 300.00, height: 30.00));
+                            pop.text = "Already Saved to Favorites"
+                            pop.backgroundColor = UIColor.systemGray
+                            pop.textColor = UIColor.white
+                            self.addSubview(pop)
+                            self.bringSubviewToFront(pop);
+                            
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [unowned self] in
+                                pop.isHidden = true
+                             }
                         }
                        
                         do {

@@ -82,7 +82,7 @@ func removeSearchQuickAction() {
     }
 
 class ViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDelegate {
-    
+    //@IBOutlet weak var savedPopUp: UITextField!
     @IBOutlet weak var restaurantsTableView: UITableView!
     
     @IBOutlet weak var searchBar: UISearchBar!
@@ -105,6 +105,8 @@ class ViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDe
 //    var storedFavorites: [FavoritedCity] = [] as! [FavoritedCity]
     override func viewDidLoad() {
         super.viewDidLoad()
+        //self.view.bringSubviewToFront(savedPopUp)
+        //savedPopUp.isHidden = true
         // Ask for Authorisation from the User.
       self.locationManager.requestAlwaysAuthorization()
         // For use in foreground
