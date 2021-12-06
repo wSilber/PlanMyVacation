@@ -127,6 +127,7 @@ class ViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDe
                                 }
                             }
             }
+
         }
         if categoryRHL.selectedSegmentIndex == 2 {
             categories = "landmarks"
