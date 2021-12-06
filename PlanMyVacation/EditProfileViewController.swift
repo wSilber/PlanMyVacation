@@ -54,7 +54,10 @@ class EditProfileViewController: UIViewController,  UINavigationControllerDelega
         
         // Add tep gesture recognizer to profile picture view to allow user to set image
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapImageView(_:)))
+        let tapGestureRecognizer2 = UITapGestureRecognizer(target: self, action: #selector(didTapAnywhere(_:)))
+        
         profilePicture.addGestureRecognizer(tapGestureRecognizer)
+        view.addGestureRecognizer(tapGestureRecognizer2)
         reload()
     }
     
@@ -63,6 +66,10 @@ class EditProfileViewController: UIViewController,  UINavigationControllerDelega
      */
     @objc func didTapImageView(_ sender: UITapGestureRecognizer) {
         present(imagePicker, animated: true, completion: nil)
+    }
+    
+    @objc func didTapAnywhere(_ sender: UITapGestureRecognizer) {
+        view.endEditing(true)
     }
     
     /*
