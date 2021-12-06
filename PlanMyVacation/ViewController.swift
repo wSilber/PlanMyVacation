@@ -3,9 +3,7 @@
 //  PlanMyVacation
 //
 //  Created by William Silberstein on 11/10/21.
-//
-
-
+// Yelp API Source: https://www.yelp.com/developers/documentation/v3/get_started
 
 import UIKit
 import MapKit
@@ -29,7 +27,6 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
     }
 
 func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
-        
         guard let actionType = ApplicationShortcutItemType(rawValue: shortcutItem.type) else { return }
         
         switch actionType {
@@ -102,16 +99,11 @@ class ViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDe
     
     @IBOutlet weak var categoryRHL: UISegmentedControl!
     
-//    var storedFavorites: [FavoritedCity] = [] as! [FavoritedCity]
     override func viewDidLoad() {
         super.viewDidLoad()
-        //self.view.bringSubviewToFront(savedPopUp)
         //savedPopUp.isHidden = true
-        // Ask for Authorisation from the User.
       self.locationManager.requestAlwaysAuthorization()
-        // For use in foreground
       self.locationManager.requestWhenInUseAuthorization()
-
       if CLLocationManager.locationServicesEnabled() {
           locationManager.delegate = self
           locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
@@ -124,31 +116,31 @@ class ViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDe
         locationManager.startUpdatingLocation()
         setUsersClosestCity()
 
-          restaurantsTableView.delegate = self
-          restaurantsTableView.dataSource = self
-          restaurantsTableView.register(UINib(nibName: "CustomCell", bundle: nil), forCellReuseIdentifier: "customCell")
+        restaurantsTableView.delegate = self
+        restaurantsTableView.dataSource = self
+        restaurantsTableView.register(UINib(nibName: "CustomCell", bundle: nil), forCellReuseIdentifier: "customCell")
           
-          selectCategory(categoryRHL)
-          categoryRHL.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: UIControl.State.normal)
+        selectCategory(categoryRHL)
+        categoryRHL.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: UIControl.State.normal)
           
-          alert.addAction(UIAlertAction(title: "Let's go!", style: .default, handler: nil))
-          self.present(alert, animated: true)
+        alert.addAction(UIAlertAction(title: "Let's go!", style: .default, handler: nil))
+        self.present(alert, animated: true)
           
-          let temp: FavoritedCity = FavoritedCity()
-          temp.cityName = "Select A City"
-          let storedFavorites: [FavoritedCity] = [temp]
-          do {
+        let temp: FavoritedCity = FavoritedCity()
+        temp.cityName = "Select A City"
+        let storedFavorites: [FavoritedCity] = [temp]
+        do {
               // Create JSON Encoder
-              let encoder = JSONEncoder()
+            let encoder = JSONEncoder()
 
               // Encode Note
-              let data = try encoder.encode(storedFavorites)
-              UserDefaults.standard.set(data, forKey: "favPlaces")
-              print(storedFavorites)
+            let data = try encoder.encode(storedFavorites)
+            UserDefaults.standard.set(data, forKey: "favPlaces")
+            print(storedFavorites)
 
-          } catch {
-              print("Unable to Encode Note (\(error))")
-          }
+        } catch {
+            print("Unable to Encode Note (\(error))")
+        }
     }
     
     let alert = UIAlertController(title: "Get Started!", message: "Explore Restaurants, Hotels, and Landmarks near you by clicking the slider or simply search a location!", preferredStyle: .alert)
@@ -248,9 +240,6 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         tableView.deselectRow(at: indexPath , animated: true)
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let detailedVC = DetailedViewController()
-//        detailedVC.restaurants = restaurants[indexPath.row]
-//        navigationController?.pushViewController(detailedVC, animated: true)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

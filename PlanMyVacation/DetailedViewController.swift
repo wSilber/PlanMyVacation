@@ -4,6 +4,7 @@
 //
 //  Created by Simran Ajwani on 11/21/21.
 //
+// Yelp API Source: https://www.yelp.com/developers/documentation/v3/get_started
 
 import UIKit
 import Foundation
@@ -168,42 +169,9 @@ class DetailedViewController: UIViewController {
         helpButtonView.setImage(UIImage(named:"helpButton"), for: .normal)
         helpButtonView.addTarget(self, action: #selector(helpButton(_:)), for: .touchUpInside)
         view.addSubview(helpButtonView)
-
-//
-//        let theReviewsFrame = CGRect(x: view.frame.midX-150, y: 400, width: 300, height: 80)
-//        let theReviewView = UITextView(frame: theReviewsFrame)
-//        if let reviewObj = restaurants!.reviews {
-//            print("reviewObj")
-//            print(reviewObj)
-//            theReviewView.text = "Review 1 " + (reviewObj[0] as! String) +
-//                "Review 2 " + (reviewObj[1] as! String) +
-//                "Review 3 " + (reviewObj[2] as! String)
-//        }
-//        if restaurants!.reviews == nil {
-//            theReviewView.text = "Reviews: Unavailable"
-//        }
-//        theReviewView.font = theReviewView.font?.withSize(15)
-//        view.addSubview(theReviewView)
-//
-        
-//        if let url = restaurants!.url {
-//            theURLView.text = "URL: " + String(url)
-//        }
-//        if restaurants!.url == nil || restaurants!.url == "" {
-//            thePhoneView.text = "URL: Unavailable"
-//        }
-//        theURLView.font = theURLView.font?.withSize(18)
-//        let hoursFrame = CGRect(x: view.frame.midX-150, y: 500, width: 300, height: 80)
-//        let theHoursView = UITextView(frame: hoursFrame)
-//        //addressView.backgroundColor = UIColor.blue
-//        theHoursView.text = "Hours: " + String((restaurants?.hours?[0])!) + String((restaurants?.hours?[1])!)
-//        theHoursView.font = theHoursView.font?.withSize(18)
-//        view.addSubview(theHoursView)
-
         // Do any additional setup after loading the view.
     }
     
-
     let alert = UIAlertController(title: "OK", message: "There is no Yelp URL for this place", preferredStyle: .alert)
     
     @objc func openYelpURL(_ sender: UIButton) {
@@ -217,8 +185,6 @@ class DetailedViewController: UIViewController {
             self.present(alert, animated: true)
         }
     }
-    
-
     
     func retrieveAPIReviews(completionHandler: @escaping ([Reviews]?, Error?) -> Void) {
         print("getAPIReviews funtion")
@@ -243,7 +209,6 @@ class DetailedViewController: UIViewController {
                         reviewOne.id = review.value(forKey: "id") as? String
                         reviewOne.text = review.value(forKey: "text") as? String
                         reviewsList.append(reviewOne)
-                        //print(reviewsList)
                     }
                     completionHandler(reviewsList, nil)
                 } catch {
@@ -253,8 +218,7 @@ class DetailedViewController: UIViewController {
             }.resume()
     }
     }
- 
-    
+
         var reviews1: [Reviews] = []
         @objc func getReviews(_ sender: UIButton) {
             sender.setImage(UIImage(named: "reviewButton2"), for: UIControl.State.normal)
@@ -269,14 +233,7 @@ class DetailedViewController: UIViewController {
                     }
                 }
             }
-            print("reviews \(self.reviews1)")
-
-//            let modalVC = ReviewModalView()
-//            modalVC.reviewsModal = self.reviews
-//            print("indetailed reviews \(reviews)")
-//            print("indetailed modal \(modalVC.reviewsModal)")
-//            modalVC.modalPresentationStyle = .overCurrentContext
-//            self.present(modalVC, animated: false)
+           //print("reviews \(self.reviews1)")
         }
             
            
@@ -286,64 +243,6 @@ class DetailedViewController: UIViewController {
         vc.modalPresentationStyle = .overCurrentContext
         self.present(vc, animated: false)
     }
-
-
-        /*
-                if let resId = restaurants?.id {
-                    print("valid resid")
-                    let apikey = "hWP1FMQbuRIU3Hvtt9_RMCJqFloDAhUoXyjw18nHWZJ9UrvAY9IOzU5zqZWN0FL3T8CtyXsNheVGCZT5ffZfD9ziVnvwKji0PnRX6na9ehtp8ev-kue9axtOYpCNYXYx"
-                let baseURL = "https://api.yelp.com/v3/businesses/\(resId)/reviews"
-                let url = URL(string: baseURL)
-                var request = URLRequest(url: url!)
-                request.setValue("Bearer \(apikey)", forHTTPHeaderField: "Authorization")
-                request.httpMethod = "GET"
-        
-        /*
-                Foundation.URLSession.shared.dataTask(with: request) { (data, response, error) in
-                        if let err = error {
-                        print(err.localizedDescription)
-                        }
-                        do {
-                        let json = try JSONSerialization.jsonObject(with: data!, options: []) as! [String: Any]
-                        print(">>>>>", json, #line, "<<<<<<<<<")
-                        } catch {
-                        print("caught")
-                        }
-                        }.resume()
-                        }
-        */
-            
-    //try 2
-            URLSession.shared.dataTask(with: request) { (data, response, error) in
-                do {
-                    let json = try JSONSerialization.jsonObject(with: data!, options: []) as! [String: Any]
-                    guard let resp = json as? NSDictionary else { return }
-                    guard let reviews = resp.value(forKey: "reviews") as? [NSDictionary] else { return }
-                    var reviewsList: [Reviews] = []
-
-                    for review in reviews {
-                        var reviewOne = Reviews()
-                        reviewOne.id = review.value(forKey: "id") as? String
-                        reviewOne.text = review.value(forKey: "text") as? String
-                        reviewsList.append(reviewOne)
-                        reviewid = (reviewOne.id)!
-                        print("1 \(reviewid)")
-                        reviewtext = (reviewOne.text)!
-                        print("2 \(reviewtext)")
-                    }
-                } catch {
-                    print("Caught error")
-                }
-            }.resume()
-
-            reviewID.text = reviewid
-            print("3 \(reviewid)")
-
-            reviewText.text = reviewtext
-            print("4 \(reviewtext)")
-            view.addSubview(reviewText)
-            view.addSubview(reviewID)
-        */
     
     //ModalView
     lazy var containerView: UIView = {
@@ -396,16 +295,13 @@ class DetailedViewController: UIViewController {
     }
     
     func animatePresentContainer() {
-        // Update bottom constraint in animation block
         UIView.animate(withDuration: 0.3) {
             self.containerViewBottomConstraint?.constant = 0
-            // Call this to trigger refresh constraint
             self.view.layoutIfNeeded()
         }
     }
     
     func setupConstraints() {
-            // 4. Add subviews
             view.addSubview(dimmedView)
             view.addSubview(containerView)
             dimmedView.translatesAutoresizingMaskIntoConstraints = false
@@ -415,11 +311,9 @@ class DetailedViewController: UIViewController {
                 dimmedView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
                 dimmedView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
                 dimmedView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-                // set container static constraint (trailing & leading)
                 containerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
                 containerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             ])
-            
             containerViewHeightConstraint = containerView.heightAnchor.constraint(equalToConstant: defaultHeight)
         containerViewBottomConstraint = containerView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: defaultHeight)
             containerViewHeightConstraint?.isActive = true

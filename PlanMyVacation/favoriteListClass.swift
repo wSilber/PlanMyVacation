@@ -4,14 +4,14 @@
 //
 //  Created by Simran Ajwani on 11/28/21.
 //
-
+// Yelp API Source: https://www.yelp.com/developers/documentation/v3/get_started
+//CLASS NOT USED
 import Foundation
 
 //
 
 //
 // Source of Movie Data: TMD. Link to API: https://developers.themoviedb.org/3/getting-started/json-and-jsonp
-
 
 class favoriteListClass{
     
@@ -24,13 +24,11 @@ class favoriteListClass{
         do {
             var plistDict = try loadPropertyList()
             plistDict["favoriteList"]?.remove(at: atIndex)
-            //print("PlistDict: \(plistDict)")
             try savePropertyList(plistDict)
         } catch {print(error)}
     }
     
     func insertPlace(placeName: String){
-       //if in dictionary, dont add
         print("reached insert method")
         do{
             _ = try loadPropertyList()
@@ -49,7 +47,6 @@ class favoriteListClass{
         }
         plistDict["favoriteList"]?.append(placeName)
         try savePropertyList(plistDict)
-        //print(try savePropertyList(plistDict))
         }
         catch{
             print(error)

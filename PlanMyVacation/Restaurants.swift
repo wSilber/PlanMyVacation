@@ -4,6 +4,7 @@
 //
 //  Created by Simran Ajwani on 11/13/21.
 //
+// Yelp API Source: https://www.yelp.com/developers/documentation/v3/get_started
 
 import Foundation
 

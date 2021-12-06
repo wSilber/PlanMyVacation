@@ -4,6 +4,7 @@
 //
 //  Created by Simran Ajwani on 11/27/21.
 //
+// Yelp API Source: https://www.yelp.com/developers/documentation/v3/get_started
 
 import UIKit
 import MapKit
@@ -38,7 +39,7 @@ class Explore: UIViewController, UICollectionViewDelegate, UICollectionViewDataS
         return imgArr.count
     }
     
-    ////citation: https://www.youtube.com/watch?v=cbeE3OQlU3c
+    //citation: https://www.youtube.com/watch?v=cbeE3OQlU3c
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
         if let vc = cell.viewWithTag(111) as? UIImageView {
@@ -50,7 +51,7 @@ class Explore: UIViewController, UICollectionViewDelegate, UICollectionViewDataS
     @IBOutlet weak var pageController: UIPageControl!
     @IBOutlet weak var sliderCollectionView: UICollectionView!
 
-    ////citation: https://www.youtube.com/watch?v=cbeE3OQlU3c
+    //citation: https://www.youtube.com/watch?v=cbeE3OQlU3c
     override func viewDidLoad() {
         super.viewDidLoad()
         exploreTitle.text = "Explore US!"
@@ -59,7 +60,7 @@ class Explore: UIViewController, UICollectionViewDelegate, UICollectionViewDataS
         sliderCollectionView.dataSource = self
         pageController.numberOfPages = imgArr.count
         pageController.currentPage = 0
-        
+
         let interaction = UIContextMenuInteraction(delegate: self)
         view.addInteraction(interaction)
         view.isUserInteractionEnabled = true
@@ -71,7 +72,6 @@ class Explore: UIViewController, UICollectionViewDelegate, UICollectionViewDataS
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func createContextMenu() -> UIMenu {
@@ -125,10 +125,8 @@ class Explore: UIViewController, UICollectionViewDelegate, UICollectionViewDataS
     }
     
     func shareButtonClicked(){
-            //Set the default sharing message.
         if(self.exploreTitle.text == "Explore US!"){
             let message = "Check out this info on top US cities!"
-            //Set the link to share.
             if let link = NSURL(string: "https://travel.usnews.com/rankings/best-usa-vacations/")
             {
                 let objectsToShare = [message,link] as [Any]
@@ -140,7 +138,6 @@ class Explore: UIViewController, UICollectionViewDelegate, UICollectionViewDataS
         
         else{
             let message = "Check out this info on top Canadian cities!"
-            //Set the link to share.
             if let link = NSURL(string: "https://travel.usnews.com/rankings/best-canada-vacations/")
             {
                 let objectsToShare = [message,link] as [Any]

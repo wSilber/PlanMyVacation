@@ -4,6 +4,7 @@
 //
 //  Created by Simran Ajwani on 11/13/21.
 //
+// Yelp API Source: https://www.yelp.com/developers/documentation/v3/get_started
 
 import UIKit
 
@@ -23,25 +24,16 @@ class CustomCell: UITableViewCell {
     var allPlacesExist = false
     
     @IBOutlet weak var addedYes: UILabel!
-    
     @IBOutlet weak var cell: UILabel!
-    
     @IBOutlet weak var parentView: UIView!
-    
     @IBOutlet weak var distanceLabel: UILabel!
-   
     @IBOutlet weak var nameLabel: UILabel!
-    
     @IBOutlet weak var favButton: UIButton!
-    
-    //var storedFavorites: [FavoritedCity] = UserDefaults.standard.object(forKey: "favPlaces") as? [FavoritedCity] ?? []
-//    var storedFavorites: [FavoritedCity] = []
-    
+        
     override func awakeFromNib() {
         super.awakeFromNib()
         favButton.layer.zPosition = 1
         self.bringSubviewToFront(favButton);
-        //popUp.text = "Hey you saved btw"
         favButton.isUserInteractionEnabled = true
         selectionStyle = .none
         // Initialization code
@@ -51,31 +43,20 @@ class CustomCell: UITableViewCell {
         nameLabel.layer.shadowRadius = 2
         nameLabel.layer.cornerRadius = 13
         nameLabel.layer.masksToBounds = true
-
     }
-
     
     @IBAction func insertFav(_ sender: UIButton!) {
-        
         favButton.setImage(UIImage(named:"starAfter"), for: UIControl.State.highlighted)
-        
-        
         //source for below code: https://cocoacasts.com/ud-5-how-to-store-a-custom-object-in-user-defaults-in-swift
-        
-        //let cityArray = try? JSONDecoder().decode([FavoritedCity].self, from: storedData!)
         var cityExists = false
         var cityIndex = 0
-        
         if let data = UserDefaults.standard.data(forKey: "favPlaces") {
             print("FAVE PLACES EXISTS")
             do {
-                
                 // Create JSON Decoder
                 let decoder = JSONDecoder()
-
                 // Decode Note
                 var storedFavorites = try decoder.decode([FavoritedCity].self, from: data)
-                
                 for (index, place) in storedFavorites.enumerated()
                     {
                         if place.cityName == locationName
@@ -104,7 +85,6 @@ class CustomCell: UITableViewCell {
                                 storedFavorites[cityIndex].restaurants.append(nameLabel.text ?? "")
                                 numRestaurants = numRestaurants + 1
                             }
-                            
                         }
                         if categoryType == "hotels"
                         {
@@ -121,8 +101,6 @@ class CustomCell: UITableViewCell {
                                 storedFavorites[cityIndex].hotels.append(nameLabel.text ?? "")
 
                             }
-                            
-                        
                         }
                         if categoryType == "landmarks"
                         {
@@ -139,7 +117,6 @@ class CustomCell: UITableViewCell {
                                 storedFavorites[cityIndex].landmarks.append(nameLabel.text ?? "")
 
                             }
-                            
                         }
                         for place in storedFavorites[cityIndex].allPlaces
                         {
@@ -150,7 +127,6 @@ class CustomCell: UITableViewCell {
                         }
                         if !allPlacesExist
                         {
-                            
                             storedFavorites[cityIndex].allPlaces.append(nameLabel.text ?? "")
                             let pop: UITextField = UITextField(frame: CGRect(x: 5, y: 0, width: 300.00, height: 30.00));
                             pop.text = "Saved to Favorites"
@@ -159,18 +135,17 @@ class CustomCell: UITableViewCell {
                             pop.textColor = UIColor.white
                             self.addSubview(pop)
                             self.bringSubviewToFront(pop);
-
                             DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [unowned self] in
                                 pop.isHidden = true
                              }
                         } else {
                             let pop: UITextField = UITextField(frame: CGRect(x: 5, y: 0, width: 300.00, height: 30.00));
                             pop.text = "Already Saved to Favorites"
-                            pop.backgroundColor = UIColor.systemGray
+                            pop.backgroundColor = UIColor.lightGray
+                            pop.textAlignment = .center
                             pop.textColor = UIColor.white
                             self.addSubview(pop)
                             self.bringSubviewToFront(pop);
-
                             DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [unowned self] in
                                 pop.isHidden = true
                              }
@@ -179,19 +154,12 @@ class CustomCell: UITableViewCell {
                         do {
                             // Create JSON Encoder
                             let encoder = JSONEncoder()
-
                             // Encode Note
                             let data = try encoder.encode(storedFavorites)
                             UserDefaults.standard.set(data, forKey: "favPlaces")
-                            //print(storedFavorites)
-
                         } catch {
                             print("Unable to Encode Note (\(error))")
                         }
-                        //UserDefaults.standard.set(storedFavorites, forKey: "favPlaces")
-//                        for item in storedFavorites {
-//                            print (item.restaurants)
-//                        }
                     }
                     else
                     {
@@ -204,17 +172,15 @@ class CustomCell: UITableViewCell {
                                 if restaurant == nameLabel.text
                                 {
                                     print("checking our restaurants" + restaurant)
-                                    //print(nameLabel.text)
                                     restaurantExists = true
                                 }
                             }
                             if !restaurantExists
                             {
-                               print("restaurant doesn't exist")
+                                print("restaurant doesn't exist")
                                 currCity.restaurants.append(nameLabel.text ?? "")
                                 numRestaurants = numRestaurants + 1
                             }
-                            
                         }
                         if categoryType == "hotels"
                         {
@@ -222,15 +188,12 @@ class CustomCell: UITableViewCell {
                             {
                                 if hotel == nameLabel.text
                                 {
-                                                                        
                                     hotelExists = true
                                 }
                             }
                             if !hotelExists
                             {
-                               
                                 currCity.hotels.append(nameLabel.text ?? "")
-                                
                             }
                         }
                         if categoryType == "landmarks"
@@ -239,29 +202,23 @@ class CustomCell: UITableViewCell {
                             {
                                 if landmark == nameLabel.text
                                 {
-                                                                        
                                     landmarkExists = true
                                 }
                             }
                             if !landmarkExists
                             {
-                               
                                 currCity.landmarks.append(nameLabel.text ?? "")
-                                
                             }
                         }
                         for place in storedFavorites[cityIndex].allPlaces
                         {
                             if place == nameLabel.text
                             {
-                                                                    
                                 allPlacesExist = true
                             }
-                            
                         }
                         if !allPlacesExist
                         {
-                           
                             currCity.allPlaces.append(nameLabel.text ?? "")
                             let pop: UITextField = UITextField(frame: CGRect(x: 5, y: 0, width: 300.00, height: 30.00));
                             pop.text = "Saved to Favorites"
@@ -270,11 +227,9 @@ class CustomCell: UITableViewCell {
                             pop.textColor = UIColor.white
                             self.addSubview(pop)
                             self.bringSubviewToFront(pop);
-
                             DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [unowned self] in
                                 pop.isHidden = true
                              }
-                            
                         } else {
                             let pop: UITextField = UITextField(frame: CGRect(x: 5, y: 0, width: 300.00, height: 30.00));
                             pop.text = "Already Saved to Favorites"
@@ -283,7 +238,6 @@ class CustomCell: UITableViewCell {
                             pop.textColor = UIColor.white
                             self.addSubview(pop)
                             self.bringSubviewToFront(pop);
-
                             DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [unowned self] in
                                 pop.isHidden = true
                              }
@@ -297,25 +251,13 @@ class CustomCell: UITableViewCell {
                             storedFavorites.append(currCity)
                             let data = try encoder.encode(storedFavorites)
                             UserDefaults.standard.set(data, forKey: "favPlaces")
-                            
                         } catch {
                             print("Unable to Encode Note (\(error))")
                         }
-                        //UserDefaults.standard.set(storedFavorites, forKey: "favPlaces")
                     }
-                
             } catch {
                 print("Unable to Decode Notes (\(error))")
             }
-
         }
-        
-        
-
-      //  favoritePlaceList.insertPlace(placeName: nameLabel.text!)
-        
-       // print(favoritePlaceList)
-        // essentially we wanted to add a location to the My Trips tab and when a user clicks on the location, they can see what they have added. or under each location it shows what they have added. either way.
     }
-
 }

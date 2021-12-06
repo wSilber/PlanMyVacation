@@ -4,6 +4,8 @@
 //
 //  Created by Simran Ajwani on 12/5/21.
 //
+// Yelp API Source: https://www.yelp.com/developers/documentation/v3/get_started
+//CLASS NOT USED
 
 import UIKit
 
@@ -16,11 +18,6 @@ class TabBarController: UITabBarController {
 
         // Do any additional setup after loading the view.
     }
-//
-//    func switchSearch(){
-//        print("enter")
-//        self.selectedIndex = 1
-//    }
     var count: Int = 0
     func changeBadgeTrips(){
         //print(tabBarcontroll?.items[2] ?? "not sure")
