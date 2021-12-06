@@ -25,7 +25,7 @@ class FavoritesController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        print("reached")
+        //print("reached")
         
         //source for this code: https://cocoacasts.com/ud-5-how-to-store-a-custom-object-in-user-defaults-in-swift
         if let data = UserDefaults.standard.data(forKey: "favPlaces") {
@@ -43,7 +43,7 @@ class FavoritesController: UIViewController, UITableViewDataSource, UITableViewD
                 favoritesTableView.delegate = self
                 favoritesTableView.register(UITableViewCell.self, forCellReuseIdentifier: "tableViewCell")
                 favoritesTableView.reloadData()
-                print("reached here")
+                //print("reached here")
             } catch {
                 print("Unable to Decode Notes (\(error))")
             }
@@ -81,7 +81,7 @@ class FavoritesController: UIViewController, UITableViewDataSource, UITableViewD
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let myCell = UITableViewCell(style: .default, reuseIdentifier: "tableViewCell")
-        print("trying to display")
+        //print("trying to display")
         //print(arrayToDisplay[selectedCity].restaurants[indexPath.row])
         if selectedCity > 0
         {

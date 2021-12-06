@@ -68,34 +68,5 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-    <key>UIApplicationShortcutItems</key>
-    <array>
-        <dict>
-            <key>UIApplicationShortcutItemTitle</key>
-            <string>Search</string>
-            <key>UIApplicationShortcutItemSubtitle</key>
-            <string>by product name</string>
-            <key>UIApplicationShortcutItemIconType</key>
-            <string>UIApplicationShortcutIconTypeSearch</string>
-            <key>UIApplicationShortcutItemType</key>
-            <string>QuickAction.Search</string>
-        </dict>
-        <dict>
-            <key>UIApplicationShortcutItemTitle</key>
-            <string>Saved Items</string>
-            <key>UIApplicationShortcutItemIconFile</key>
-            <string>SavedItems</string>
-            <key>UIApplicationShortcutItemType</key>
-            <string>QuickAction.SavedItems</string>
-        </dict>
-        <dict>
-            <key>UIApplicationShortcutItemTitle</key>
-            <string>Cart</string>
-            <key>UIApplicationShortcutItemIconFile</key>
-            <string>cart.png</string>
-            <key>UIApplicationShortcutItemType</key>
-            <string>QuickAction.Cart</string>
-       </dict>
-    </array>
 </dict>
 </plist>

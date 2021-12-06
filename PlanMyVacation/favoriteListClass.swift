@@ -29,7 +29,7 @@ class favoriteListClass{
     }
     
     func insertPlace(placeName: String){
-        print("reached insert method")
+        //print("reached insert method")
         do{
             _ = try loadPropertyList()
         }
@@ -63,9 +63,9 @@ class favoriteListClass{
     func loadPropertyList() throws -> [String:[String]]
     {
         let propListDict: AnyObject = NSDictionary(contentsOfFile: propListPath!)!
-        print("loadproplist dict: \(propListDict)")
+        //print("loadproplist dict: \(propListDict)")
         let proplist = ["favoriteList" : propListDict.object(forKey: "favoriteList") as! Array<String>]
-        print("loadproplist list: \(proplist)")
+        //print("loadproplist list: \(proplist)")
         return proplist
     }
     //above block code cited from online: www.stackoverflow.com/questions/47419327/swift-4-adding-dictionaries-to-plist

@@ -10,69 +10,6 @@ import MapKit
 import CoreLocation
 import Foundation
 
-var launchedShortcutItem: UIApplicationShortcutItem?
-func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-        // If the app is launched by Quick Action, then take the relevant action
-        if let shortcutItem = launchOptions?[UIApplication.LaunchOptionsKey.shortcutItem] as? UIApplicationShortcutItem {
-            launchedShortcutItem = shortcutItem
-            // Since, the app launch is triggered by QuicAction, block "performActionForShortcutItem:completionHandler" method from being called.
-            return false
-        }
-        return true
-    }
-
-func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
-        guard let actionType = ApplicationShortcutItemType(rawValue: shortcutItem.type) else { return }
-        
-        switch actionType {
-        case .search:
-            print("Handle search action")
-        case .savedItems:
-            print("Handle Saved Items action")
-        case .cart:
-            print("Handle Cart action")
-        }
-    }
-
-enum ApplicationShortcutItemType:String {
-    case search     = "QuickAction.Search"
-    case savedItems = "QuickAction.SavedItems"
-    case cart       = "QuickAction.Cart"
-}
-
-enum ApplicationShortcutItemTitle:String {
-    case search     = "Search"
-    case savedItems = "Saved Items"
-    case cart       = "Cart"
-}
-
-enum ApplicationShortcutItemSubTitle:String {
-    case search     = "by product name"
-}
-
-
-func addSearchQuickAction() {
-    let searchItem = UIApplicationShortcutItem(type: ApplicationShortcutItemType.search.rawValue,
-                                                   localizedTitle: ApplicationShortcutItemTitle.search.rawValue,
-                                                   localizedSubtitle: ApplicationShortcutItemSubTitle.search.rawValue,
-                                                   icon: UIApplicationShortcutIcon(type: .update),
-                                                   userInfo: nil)
-        var shortcutItems = UIApplication.shared.shortcutItems ?? []
-        shortcutItems.append(searchItem)
-        UIApplication.shared.shortcutItems = shortcutItems
-    }
-
-func removeSearchQuickAction() {
-        var shortcutItems = UIApplication.shared.shortcutItems ?? []
-        for (index, item) in shortcutItems.enumerated() {
-            if item.type == ApplicationShortcutItemType.search.rawValue {
-                shortcutItems.remove(at: index)
-            }
-        }
-        UIApplication.shared.shortcutItems = shortcutItems
-    }
-
 class ViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDelegate {
     @IBOutlet weak var restaurantsTableView: UITableView!
     
