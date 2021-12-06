@@ -135,7 +135,7 @@ class CustomCell: UITableViewCell {
                             pop.textColor = UIColor.white
                             self.addSubview(pop)
                             self.bringSubviewToFront(pop);
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [unowned self] in
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [unowned self] in
                                 pop.isHidden = true
                              }
                         } else {
@@ -146,7 +146,7 @@ class CustomCell: UITableViewCell {
                             pop.textColor = UIColor.white
                             self.addSubview(pop)
                             self.bringSubviewToFront(pop);
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [unowned self] in
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [unowned self] in
                                 pop.isHidden = true
                              }
                         }
@@ -227,7 +227,7 @@ class CustomCell: UITableViewCell {
                             pop.textColor = UIColor.white
                             self.addSubview(pop)
                             self.bringSubviewToFront(pop);
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [unowned self] in
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [unowned self] in
                                 pop.isHidden = true
                              }
                         } else {
