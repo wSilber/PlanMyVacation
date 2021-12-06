@@ -12,14 +12,10 @@ import Foundation
 
 var launchedShortcutItem: UIApplicationShortcutItem?
 func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-    print("applicarion")
         // Override point for customization after application launch.
-        
         // If the app is launched by Quick Action, then take the relevant action
         if let shortcutItem = launchOptions?[UIApplication.LaunchOptionsKey.shortcutItem] as? UIApplicationShortcutItem {
-            
             launchedShortcutItem = shortcutItem
-            
             // Since, the app launch is triggered by QuicAction, block "performActionForShortcutItem:completionHandler" method from being called.
             return false
         }
@@ -57,7 +53,6 @@ enum ApplicationShortcutItemSubTitle:String {
 
 
 func addSearchQuickAction() {
-    //removeSearchQuickAction
     let searchItem = UIApplicationShortcutItem(type: ApplicationShortcutItemType.search.rawValue,
                                                    localizedTitle: ApplicationShortcutItemTitle.search.rawValue,
                                                    localizedSubtitle: ApplicationShortcutItemSubTitle.search.rawValue,
@@ -79,7 +74,6 @@ func removeSearchQuickAction() {
     }
 
 class ViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDelegate {
-    //@IBOutlet weak var savedPopUp: UITextField!
     @IBOutlet weak var restaurantsTableView: UITableView!
     
     @IBOutlet weak var searchBar: UISearchBar!
@@ -101,7 +95,6 @@ class ViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //savedPopUp.isHidden = true
       self.locationManager.requestAlwaysAuthorization()
       self.locationManager.requestWhenInUseAuthorization()
       if CLLocationManager.locationServicesEnabled() {
@@ -136,7 +129,6 @@ class ViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDe
               // Encode Note
             let data = try encoder.encode(storedFavorites)
             UserDefaults.standard.set(data, forKey: "favPlaces")
-            print(storedFavorites)
 
         } catch {
             print("Unable to Encode Note (\(error))")
@@ -150,13 +142,13 @@ class ViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDe
         CPlatitude = locValue.latitude
         CPlongitude = locValue.longitude
         location = locations.first ?? CLLocation(latitude: 38.627003, longitude: -90.19940200)
-        print("location \(String(describing: locations.first))")
+        //print("location \(String(describing: locations.first))")
         setUsersClosestCity()
     }
 
     func setUsersClosestCity(){
     //https://stackoverflow.com/questions/47987473/addressdictionary-is-deprecated-first-deprecated-in-ios-11-0-use-properties
-    print("setusersclosestcity \(location)")
+    //print("setusersclosestcity \(location)")
     let geoCoder = CLGeocoder()
         geoCoder.reverseGeocodeLocation(location) { [self] (placemarksArray, error) in
                 if (error) == nil {
@@ -166,8 +158,7 @@ class ViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDe
                         if let userlocation = placemark?.locality {
                             let userlocation = String(userlocation.filter { !" \n\t\r".contains($0) })
                             self.locationInput = userlocation
-                            print("userlocation \(userlocation)")
-                            print("locationinput \(locationInput)")
+                            //print("locationinput \(locationInput)")
                         }
                     }
                 }
@@ -200,7 +191,6 @@ class ViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDe
                             }
             }
         }
-        
         if categoryRHL.selectedSegmentIndex == 2 {
             categories = "landmarks"
         retrieveVenues(location: locationInput, category: categories,
