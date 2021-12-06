@@ -51,11 +51,10 @@ class Explore: UIViewController, UICollectionViewDelegate, UICollectionViewDataS
     @IBOutlet weak var sliderCollectionView: UICollectionView!
 
     ////citation: https://www.youtube.com/watch?v=cbeE3OQlU3c
-
     override func viewDidLoad() {
         super.viewDidLoad()
         exploreTitle.text = "Explore US!"
-        cityName.text = "Explore San Francisco"
+        cityName.text = "Visit San Francisco"
         sliderCollectionView.delegate = self
         sliderCollectionView.dataSource = self
         pageController.numberOfPages = imgArr.count

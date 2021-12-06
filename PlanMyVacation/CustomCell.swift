@@ -22,6 +22,7 @@ class CustomCell: UITableViewCell {
     var landmarkExists = false
     var allPlacesExist = false
     
+    @IBOutlet weak var addedYes: UILabel!
     
     @IBOutlet weak var cell: UILabel!
     
@@ -32,7 +33,6 @@ class CustomCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     
     @IBOutlet weak var favButton: UIButton!
-
     
     //var storedFavorites: [FavoritedCity] = UserDefaults.standard.object(forKey: "favPlaces") as? [FavoritedCity] ?? []
 //    var storedFavorites: [FavoritedCity] = []
@@ -51,19 +51,15 @@ class CustomCell: UITableViewCell {
         nameLabel.layer.cornerRadius = 13
         nameLabel.layer.masksToBounds = true
     }
-    
-    
+
     
     @IBAction func insertFav(_ sender: UIButton!) {
-        favButton.setImage(UIImage(named:"starAfter"), for: UIControl.State.normal)
-        
+        favButton.setImage(UIImage(named:"starAfter"), for: UIControl.State.highlighted)
         //source for below code: https://cocoacasts.com/ud-5-how-to-store-a-custom-object-in-user-defaults-in-swift
-        
         
         //let cityArray = try? JSONDecoder().decode([FavoritedCity].self, from: storedData!)
         var cityExists = false
         var cityIndex = 0
-        
         
         if let data = UserDefaults.standard.data(forKey: "favPlaces") {
             
@@ -92,7 +88,7 @@ class CustomCell: UITableViewCell {
                                 if restaurant == nameLabel.text
                                 {
                                     print("checking our restaurants" + restaurant)
-                                    print(nameLabel.text)
+                                    //print(nameLabel.text)
                                     restaurantExists = true
                                 }
                             }
@@ -110,12 +106,14 @@ class CustomCell: UITableViewCell {
                             {
                                 if hotel == nameLabel.text
                                 {
+
                                     hotelExists = true
                                 }
                             }
                             if !hotelExists
                             {
                                 storedFavorites[cityIndex].hotels.append(nameLabel.text ?? "")
+
                             }
                             
                         
@@ -126,12 +124,14 @@ class CustomCell: UITableViewCell {
                             {
                                 if landmark == nameLabel.text
                                 {
+
                                     landmarkExists = true
                                 }
                             }
                             if !landmarkExists
                             {
                                 storedFavorites[cityIndex].landmarks.append(nameLabel.text ?? "")
+
                             }
                             
                         }
@@ -160,9 +160,9 @@ class CustomCell: UITableViewCell {
                             print("Unable to Encode Note (\(error))")
                         }
                         //UserDefaults.standard.set(storedFavorites, forKey: "favPlaces")
-                        for item in storedFavorites {
-                            //print (item.restaurants)
-                        }
+//                        for item in storedFavorites {
+//                            print (item.restaurants)
+//                        }
                     }
                     else
                     {
@@ -175,7 +175,7 @@ class CustomCell: UITableViewCell {
                                 if restaurant == nameLabel.text
                                 {
                                     print("checking our restaurants" + restaurant)
-                                    print(nameLabel.text)
+                                    //print(nameLabel.text)
                                     restaurantExists = true
                                 }
                             }

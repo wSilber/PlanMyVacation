@@ -9,17 +9,22 @@ import UIKit
 
 class TabBarController: UITabBarController {
 
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        print("tab bar loaded")
-//        // Do any additional setup after loading the view.
-//    }
+    @IBOutlet weak var tabBarcontroll: UITabBar!
+        override func viewDidLoad() {
+        super.viewDidLoad()
+            //print(tabBarcontroll?.items ?? "not sure here")
+
+        // Do any additional setup after loading the view.
+    }
 //
 //    func switchSearch(){
 //        print("enter")
 //        self.selectedIndex = 1
 //    }
-
+    var count: Int = 0
+    func changeBadgeTrips(){
+        //print(tabBarcontroll?.items[2] ?? "not sure")
+    }
     /*
     // MARK: - Navigation
 
