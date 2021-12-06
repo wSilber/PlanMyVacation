@@ -54,7 +54,7 @@ class Explore: UIViewController, UICollectionViewDelegate, UICollectionViewDataS
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        exploreTitle.text = "Explore New Cities!"
+        exploreTitle.text = "Explore US!"
         cityName.text = "Explore San Francisco"
         sliderCollectionView.delegate = self
         sliderCollectionView.dataSource = self
@@ -127,6 +127,7 @@ class Explore: UIViewController, UICollectionViewDelegate, UICollectionViewDataS
     
     func shareButtonClicked(){
             //Set the default sharing message.
+        if(self.exploreTitle.text == "Explore US!"){
             let message = "Check out this info on top US cities!"
             //Set the link to share.
             if let link = NSURL(string: "https://travel.usnews.com/rankings/best-usa-vacations/")
@@ -136,6 +137,19 @@ class Explore: UIViewController, UICollectionViewDelegate, UICollectionViewDataS
                 activityVC.excludedActivityTypes = [UIActivity.ActivityType.airDrop, UIActivity.ActivityType.addToReadingList]
                 self.present(activityVC, animated: true, completion: nil)
             }
+        }
+        
+        else{
+            let message = "Check out this info on top Canadian cities!"
+            //Set the link to share.
+            if let link = NSURL(string: "https://travel.usnews.com/rankings/best-canada-vacations/")
+            {
+                let objectsToShare = [message,link] as [Any]
+                let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+                activityVC.excludedActivityTypes = [UIActivity.ActivityType.airDrop, UIActivity.ActivityType.addToReadingList]
+                self.present(activityVC, animated: true, completion: nil)
+            }
+        }
     }
     
     func notifyUser(heading: String, note: String){

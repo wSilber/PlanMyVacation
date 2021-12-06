@@ -39,8 +39,9 @@ class DetailedViewController: UIViewController {
         
         let theNameFrame = CGRect(x: view.frame.midX-150, y: 325, width: 300, height: 75)
         let nameView = UILabel(frame: theNameFrame)
-        nameView.backgroundColor = UIColor(red: 76, green: 76, blue: 76, alpha: 0.80)
-
+        nameView.backgroundColor = UIColor(red: 0.40, green: 0.62, blue: 0.47, alpha: 0.86)
+        nameView.textColor = UIColor.white
+        
         if let placeName = restaurants!.name{
             nameView.text = placeName
         }
@@ -48,7 +49,7 @@ class DetailedViewController: UIViewController {
             nameView.text = "Name: Missing Name"
         }
         nameView.font = nameView.font?.withSize(18)
-        nameView.textColor = UIColor.gray
+        nameView.textColor = UIColor(red: 1.00, green: 1.00, blue: 1.00, alpha: 1.00)
         nameView.textAlignment = .center
         nameView.baselineAdjustment = .alignCenters
         nameView.numberOfLines = 2
@@ -64,38 +65,34 @@ class DetailedViewController: UIViewController {
         }
         addressView.textAlignment = .center
         addressView.font = addressView.font?.withSize(15)
-        addressView.backgroundColor = UIColor(red: 76, green: 76, blue: 76, alpha: 0.80)
+        addressView.backgroundColor = UIColor(red: 0.76, green: 0.76, blue: 0.76, alpha: 0)
+
         view.addSubview(addressView)
         
-        
-        
-        
-        let yelpURLFrame = CGRect(x: view.frame.midX-90, y: 440, width: 100, height: 80)
+        let yelpURLFrame = CGRect(x: view.frame.midX-90, y: 460, width: 100, height: 80)
         let theURLView = UIButton(frame: yelpURLFrame)
         theURLView.setImage(UIImage(named:"yelpURL"), for: .normal)
         theURLView.addTarget(self, action: #selector(openYelpURL(_:)), for: .touchUpInside)
         view.addSubview(theURLView)
 
-        let reviewButtonFrame = CGRect(x: view.frame.midX+20, y: 440, width: 100, height: 80)
+        let reviewButtonFrame = CGRect(x: view.frame.midX+20, y: 465, width: 100, height: 80)
         let theReviewButtonView = UIButton(frame: reviewButtonFrame)
         theReviewButtonView.setImage(UIImage(named:"reviewButton"), for: .normal)
         theReviewButtonView.addTarget(self, action: #selector(getReviews(_:)), for: .touchUpInside)
         view.addSubview(theReviewButtonView)
         
-        
-        let addInfoFrame = CGRect(x: view.frame.midX-150, y: 525, width: 300, height: 80)
+        let addInfoFrame = CGRect(x: view.frame.midX-150, y: 540, width: 300, height: 80)
         let addInfoView = UITextView(frame: addInfoFrame)
         addInfoView.text = "ADDITIONAL INFOMRATION"
         addInfoView.textAlignment = .center
-        addInfoView.textColor = UIColor.darkGray
+        addInfoView.textColor = UIColor(red: 0.40, green: 0.62, blue: 0.47, alpha: 1.0)
+
         addInfoView.font = addInfoView.font?.withSize(22)
+        addInfoView.backgroundColor = UIColor.clear
         
         view.addSubview(addInfoView)
         
-        
-        
-        
-        let isClosedFrame = CGRect(x: view.frame.midX-150, y:550, width: 300, height: 50)
+        let isClosedFrame = CGRect(x: view.frame.midX-150, y:580, width: 300, height: 50)
         let isClosedView = UILabel(frame: isClosedFrame)
         if let boolisclosed = restaurants!.is_closed {
         if(boolisclosed == false){
@@ -109,13 +106,12 @@ class DetailedViewController: UIViewController {
             isClosedView.text = " Open? Info is unavailable"
         }
         isClosedView.font = isClosedView.font?.withSize(15.5)
-//        isClosedView.textColor = UIColor.black
         isClosedView.textAlignment = .left
         isClosedView.baselineAdjustment = .alignCenters
         isClosedView.numberOfLines = 1
         view.addSubview(isClosedView)
 
-        let theRatingFrame = CGRect(x: view.frame.midX-150, y: 600, width: 150, height: 50)
+        let theRatingFrame = CGRect(x: view.frame.midX-150, y: 619, width: 150, height: 50)
         let ratingView = UITextView(frame: theRatingFrame)
         if let rating = restaurants!.rating {
             ratingView.text = "Rating? " + String(rating) + "/5.0"
@@ -126,7 +122,7 @@ class DetailedViewController: UIViewController {
         ratingView.font = ratingView.font?.withSize(15.5)
         view.addSubview(ratingView)
         
-        let thePriceFrame = CGRect(x: view.frame.midX-150, y: 635, width: 300, height: 50)
+        let thePriceFrame = CGRect(x: view.frame.midX-150, y: 650, width: 300, height: 50)
         let priceView = UITextView(frame: thePriceFrame)
         
         if let priceofBusiness = restaurants!.price{
@@ -152,12 +148,6 @@ class DetailedViewController: UIViewController {
         priceView.font = priceView.font?.withSize(15.5)
         view.addSubview(priceView)
         
-      
-       
-       
-        
-        
-        
         let thePhoneFrame = CGRect(x: view.frame.midX-150, y: 680, width: 300, height: 100)
         let thePhoneView = UILabel(frame: thePhoneFrame)
         if let phoneNumber = restaurants!.phone {
@@ -172,12 +162,6 @@ class DetailedViewController: UIViewController {
         thePhoneView.baselineAdjustment = .alignCenters
         thePhoneView.numberOfLines = 2
         view.addSubview(thePhoneView)
-        
-      
-        
-        
-        
-        
         
         let helpButtonFrame = CGRect(x: view.frame.midX+100, y: 100, width: 70, height: 70)
         let helpButtonView = UIButton(frame: helpButtonFrame)

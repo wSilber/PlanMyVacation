@@ -12,6 +12,75 @@ import MapKit
 import CoreLocation
 import Foundation
 
+var launchedShortcutItem: UIApplicationShortcutItem?
+func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+    print("applicarion")
+        // Override point for customization after application launch.
+        
+        // If the app is launched by Quick Action, then take the relevant action
+        if let shortcutItem = launchOptions?[UIApplication.LaunchOptionsKey.shortcutItem] as? UIApplicationShortcutItem {
+            
+            launchedShortcutItem = shortcutItem
+            
+            // Since, the app launch is triggered by QuicAction, block "performActionForShortcutItem:completionHandler" method from being called.
+            return false
+        }
+        return true
+    }
+
+func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
+        
+        guard let actionType = ApplicationShortcutItemType(rawValue: shortcutItem.type) else { return }
+        
+        switch actionType {
+        case .search:
+            print("Handle search action")
+        case .savedItems:
+            print("Handle Saved Items action")
+        case .cart:
+            print("Handle Cart action")
+        }
+    }
+
+enum ApplicationShortcutItemType:String {
+    case search     = "QuickAction.Search"
+    case savedItems = "QuickAction.SavedItems"
+    case cart       = "QuickAction.Cart"
+}
+
+enum ApplicationShortcutItemTitle:String {
+    case search     = "Search"
+    case savedItems = "Saved Items"
+    case cart       = "Cart"
+}
+
+enum ApplicationShortcutItemSubTitle:String {
+    case search     = "by product name"
+}
+
+
+func addSearchQuickAction() {
+    //removeSearchQuickAction
+    let searchItem = UIApplicationShortcutItem(type: ApplicationShortcutItemType.search.rawValue,
+                                                   localizedTitle: ApplicationShortcutItemTitle.search.rawValue,
+                                                   localizedSubtitle: ApplicationShortcutItemSubTitle.search.rawValue,
+                                                   icon: UIApplicationShortcutIcon(type: .update),
+                                                   userInfo: nil)
+        var shortcutItems = UIApplication.shared.shortcutItems ?? []
+        shortcutItems.append(searchItem)
+        UIApplication.shared.shortcutItems = shortcutItems
+    }
+
+func removeSearchQuickAction() {
+        var shortcutItems = UIApplication.shared.shortcutItems ?? []
+        for (index, item) in shortcutItems.enumerated() {
+            if item.type == ApplicationShortcutItemType.search.rawValue {
+                shortcutItems.remove(at: index)
+            }
+        }
+        UIApplication.shared.shortcutItems = shortcutItems
+    }
+
 class ViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDelegate {
     
     @IBOutlet weak var restaurantsTableView: UITableView!
@@ -80,65 +149,12 @@ class ViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDe
           }
     }
     
-    
-    /*
-
-    override func viewDidAppear(_ animated: Bool) {
-        //super.viewDidLoad()
-      
-        setUsersClosestCity()
-        searchBar.placeholder = "Search a Location"
-        locationManager.startUpdatingLocation()
-        
-        searchBar.delegate = self
-
-        // Ask for Authorisation from the User.
-        self.locationManager.requestAlwaysAuthorization()
-        // For use in foreground
-        self.locationManager.requestWhenInUseAuthorization()
-
-        if        cell.backgroundColor = .white
- CLLocationManager.locationServicesEnabled() {
-            locationManager.delegate = self
-            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-            locationManager.startUpdatingLocation()
-        }
-  
-        restaurantsTableView.delegate = self
-        restaurantsTableView.dataSource = self
-        restaurantsTableView.register(UINib(nibName: "CustomCell", bundle: nil), forCellReuseIdentifier: "customCell")
-        
-        selectCategory(categoryRHL)
-        categoryRHL.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: UIControl.State.normal)
-        
-        alert.addAction(UIAlertAction(title: "Let's go!", style: .default, handler: nil))
-        self.present(alert, animated: true)
-        
-        let temp: FavoritedCity = FavoritedCity()
-        temp.cityName = "Select A City"
-        let storedFavorites: [FavoritedCity] = [temp]
-        do {
-            // Create JSON Encoder
-            let encoder = JSONEncoder()
-
-            // Encode Note
-            let data = try encoder.encode(storedFavorites)
-            UserDefaults.standard.set(data, forKey: "favPlaces")
-            print(storedFavorites)
-
-        } catch {
-            print("Unable to Encode Note (\(error))")
-        }
- 
-    }
- */
     let alert = UIAlertController(title: "Get Started!", message: "Explore Restaurants, Hotels, and Landmarks near you by clicking the slider or simply search a location!", preferredStyle: .alert)
     
     @objc func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
         CPlatitude = locValue.latitude
         CPlongitude = locValue.longitude
-        //location = CLLocation(latitude: CPlatitude, longitude: CPlongitude)
         location = locations.first ?? CLLocation(latitude: 38.627003, longitude: -90.19940200)
         print("location \(String(describing: locations.first))")
         setUsersClosestCity()
@@ -168,18 +184,6 @@ class ViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDe
     @IBAction func selectCategory(_ sender: UISegmentedControl) {
         if categoryRHL.selectedSegmentIndex == 0 {
             categories = "restaurants"
-//            retrieveVenues(latitude: CPLatitude, longitude: CPLongitude, category: categories,
-//                           limit: 50, sortBy: "distance", locale: "en_US") { (response, error) in
-//
-//                            if let response = response {
-//                                self.restaurants = response
-//                                DispatchQueue.main.async {
-//                                    self.restaurantsTableView.reloadData()
-//                                }
-//                            }
-//            }
-//            print("selectCategory \(locationInput)")
-
             retrieveVenues(location: locationInput, category: categories,
                            limit: 50, sortBy: "distance", locale: "en_US") { (response, error) in
                             if let response = response {
@@ -232,8 +236,6 @@ class ViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDe
                             }
                         }
         }
-        //print("restaurants \(self.restaurants)")
-        //searchActive = false;
         self.searchBar.endEditing(true)
     }
     
@@ -271,7 +273,6 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         if let ratingnotnill = restaurants[indexPath.row].rating {
         let ratinglabel = String(format: "%.1f",ratingnotnill)
         cell.distanceLabel.text = "Rating: " + String(ratinglabel) + "/5.0"
-        //priceView.font = priceView.font?.withSize(18)
         cell.distanceLabel.font = cell.distanceLabel.font?.withSize(13)
         }
         if (restaurants[indexPath.row].rating == nil){
@@ -283,6 +284,4 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         cell.categoryType = categories
         return cell
     }
-    
-    
 }
