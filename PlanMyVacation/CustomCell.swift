@@ -152,11 +152,12 @@ class CustomCell: UITableViewCell {
                             storedFavorites[cityIndex].allPlaces.append(nameLabel.text ?? "")
                             let pop: UITextField = UITextField(frame: CGRect(x: 5, y: 0, width: 300.00, height: 30.00));
                             pop.text = "Saved to Favorites"
-                            pop.backgroundColor = UIColor.systemGray
+                            pop.backgroundColor = UIColor.lightGray
+                            pop.textAlignment = .center
                             pop.textColor = UIColor.white
                             self.addSubview(pop)
                             self.bringSubviewToFront(pop);
-                            
+
                             DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [unowned self] in
                                 pop.isHidden = true
                              }
@@ -167,7 +168,7 @@ class CustomCell: UITableViewCell {
                             pop.textColor = UIColor.white
                             self.addSubview(pop)
                             self.bringSubviewToFront(pop);
-                            
+
                             DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [unowned self] in
                                 pop.isHidden = true
                              }
@@ -192,7 +193,7 @@ class CustomCell: UITableViewCell {
                     }
                     else
                     {
-                        var currCity = FavoritedCity()
+                        let currCity = FavoritedCity()
                         currCity.cityName = locationName!
                         if categoryType == "restaurants"
                         {
